@@ -1,3 +1,10 @@
+
+.mdl-layout__header-row{
+  background-color: #00AEC7!important;
+}
+.mdl-layout-title{
+  color: white;
+}
 #map {
   height: 100%;  
   width: 100%; 
@@ -10,11 +17,12 @@ html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 .avatar {
-  width: 85px;
-  height: 85px;
+  width: 95px;
+  height: 95px;
 }
 .layout .mdl-layout__header .mdl-layout__drawer-button {
-  color: rgba(0, 0, 0, 0.54);
+  color: white;
+  background-color: #00AEC7;
 }
 
 .drawer {
@@ -48,6 +56,7 @@ html, body {
       -ms-flex-pack: end;
           justify-content: flex-end;
   padding: 16px;
+  background-color: #001E62;
 }
 .avatar-dropdown {
   display: -webkit-flex;
@@ -67,6 +76,7 @@ html, body {
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+    background-color: #00AEC7!important;
 }
 .layout .navigation .mdl-navigation__link {
   display: -webkit-flex !important;
@@ -78,16 +88,16 @@ html, body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  color: rgba(255, 255, 255, 0.56);
+  color: white;
   font-weight: 500;
 }
 .layout .navigation .mdl-navigation__link:hover {
-  background-color: #00BCD4;
+  background-color: red;
   color: white;
 }
 .navigation .mdl-navigation__link .material-icons {
   font-size: 24px;
-  color: rgba(255, 255, 255, 0.56);
+  color: white!important;
   margin-right: 32px;
 }
 
@@ -95,3 +105,6 @@ html, body {
   max-width: 1080px;
 }
 
+.mdl-button--icon{
+  color: white;
+}
