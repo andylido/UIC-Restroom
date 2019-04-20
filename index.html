@@ -45,10 +45,10 @@
     
   <body>
       
-    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout-header">
       <header class="header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Map</span>
+          <span class="mdl-layout-title">UIC Bathroom Finder</span>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -77,7 +77,7 @@
           <a class="mdl-navigation__link" href="#map"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">star</i>Favorites</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add</i>Add</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">cloud</i>Weather</a>
+          <a class="msg mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">cloud</i>Weather</a>
           <div class="mdl-layout-spacer"></div>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
@@ -104,7 +104,15 @@
             }
         });  
          
-        var weatherendpoint = "http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=6c40b84bd4c1b447c8ff9daa4e5c3e1a";
+        var weatherurl = "https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=6c40b84bd4c1b447c8ff9daa4e5c3e1a";
+        $.get(weatherurl, function(responce){
+            var temp = responce.main.temp;
+            temp = Math.round(((temp-273.15)*(9/5) +32));
+            $(".msg").empty();
+            $(".msg").append("It is "+temp+" degrees in Chicago right now");
+            
+        });
+        
     </script>
       
     <script>
