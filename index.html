@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href='./manifest.json'> 
       
     <style>
         #view-source {
@@ -45,7 +46,7 @@
     
   <body>
       
-    <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout-header">
+    <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout--fixed-header">
       <header class="header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title">UIC Bathroom Finder</span>
@@ -71,13 +72,13 @@
         
       <div class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="drawer-header">
-          <img src="images/uic.PNG" class="avatar">
+          <div id="logo"><img src="images/uic.PNG" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
         </header>
         <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
           <a class="mdl-navigation__link" href="#map"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">star</i>Favorites</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add</i>Add</a>
-          <a class="msg mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">cloud</i>Weather</a>
+          <a class="msg mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">cloud</i>Can't Fetch Weather</a>
           <div class="mdl-layout-spacer"></div>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
@@ -89,12 +90,23 @@
       </main> 
     </div>
     
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
     <script type="text/javascript" src="javascript.js"></script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
      
-      
+    <!-- Service Worker -->
+    <script>
+        // register the service worker for offline use
+        //if ('serviceWorker' in navigator) {
+        //navigator.serviceWorker
+         //.register('./sw.js')
+         //.then(function() { console.log('Service Worker Registered'); });
+        //}
+    </script>
+     
+    <!-- Run on Application Launch -->
     <script>
         $(document).ready(function() {
             $("#map").show();
@@ -102,19 +114,31 @@
             function hidescreen(){
                 $(".content").hide();
             }
+            $("#logo").on("click", function(){
+                document.location.reload();
+            });
         });  
-         
+        
+        //Make an Ajax Call for Weather using API
         var weatherurl = "https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=6c40b84bd4c1b447c8ff9daa4e5c3e1a";
         $.get(weatherurl, function(responce){
             var temp = responce.main.temp;
             temp = Math.round(((temp-273.15)*(9/5) +32));
             $(".msg").empty();
-            $(".msg").append("It is "+temp+" degrees in Chicago right now");
-            
+            $(".msg").append("It is "+temp+"&#176;F degrees in Chicago right now");
         });
-        
     </script>
-      
+    
+    <!-- Index Database using Dexie -->
+    <script>
+        db = new Dexie("Bathroom_database");
+        db.version(1).stores({
+            //Store something
+            bathroom: "++id, location"
+        });
+    </script>
+    
+    <!-- Google Maps API for visualization-->
     <script>
         function geolocation(controlDiv, map) {
             // Set CSS for the location button border.
@@ -171,7 +195,7 @@
             });
         }
         
-        //Initiate Google Maps to UIC location
+        //Initiate Google Maps to UIC coordinates on Start
         function initMap() {
             var uic = {lat: 41.8698, lng: -87.6696};
             map = new google.maps.Map(document.getElementById('map'), {
@@ -179,8 +203,7 @@
               center: uic
             });
 
-            // Create the DIV to hold the control and call the CenterControl()
-            // constructor passing in this DIV.
+            // Create the DIV to hold the geolocation button
             var geolocationDiv = document.createElement('div');
             var geo = new geolocation(geolocationDiv, map);
 

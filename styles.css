@@ -1,17 +1,17 @@
 #map {
-        height: 100%;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
+  height: 100%;  
+  width: 100%; 
        }
-.mdl-layout__header{
-    height: 20px;
+.dashmenu {
+  text-align: right;
+  padding-right: 15px;
 }
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 .avatar {
-  width: 70px;
-  height: 70px;
-  border-radius: 30px;
+  width: 85px;
+  height: 85px;
 }
 .layout .mdl-layout__header .mdl-layout__drawer-button {
   color: rgba(0, 0, 0, 0.54);
