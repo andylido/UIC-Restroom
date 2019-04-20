@@ -72,7 +72,7 @@
         
       <div class="drawer mdl-layout__drawer">
         <header class="drawer-header">
-          <div id="logo"><img src="images/uic.PNG" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
+          <div id="logo"><img src="images/lockup.PNG" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
         </header>
         <nav class="navigation mdl-navigation">
           <a class="mdl-navigation__link" href="#map"><i class=" material-icons" role="presentation">home</i>Home</a>
@@ -98,12 +98,12 @@
      
     <!-- Service Worker -->
     <script>
-        // register the service worker for offline use
-        //if ('serviceWorker' in navigator) {
-        //navigator.serviceWorker
-         //.register('./sw.js')
-         //.then(function() { console.log('Service Worker Registered'); });
-        //}
+        //register the service worker for offline use
+        if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+         .register('./sw.js')
+         .then(function() { console.log('Service Worker Registered'); });
+        }
     </script>
      
     <!-- Run on Application Launch -->
@@ -132,7 +132,7 @@
     <!-- Index Database using Dexie -->
     <script>
         db = new Dexie("Bathroom_database");
-        db.version(1).stores({
+        db.version(2).stores({
             //Store something
             bathroom: "++id, location"
         });
