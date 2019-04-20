@@ -19,7 +19,7 @@ html, body {
 .avatar {
   width: 75px;
   height: 75px;
-  margin-left: 150px;
+  margin-left: 140px;
 }
 .layout .mdl-layout__header .mdl-layout__drawer-button {
   color: white;
@@ -110,4 +110,7 @@ html, body {
 
 .mdl-button--icon{
   color: white;
+}
+.mdl-navigation{
+background-color: #001E62;
 }
