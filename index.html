@@ -49,7 +49,7 @@
     <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout--fixed-header">
       <header class="header mdl-layout__header">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">UIC Bathroom Finder</span>
+          <span class="mdl-layout-title"><img id="headerlogo" src="images/uicwt.PNG"> Bathroom Finder</span>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -76,17 +76,20 @@
         </header>
         <nav class="navigation mdl-navigation">
           <a class="mdl-navigation__link" href="#map"><i class=" material-icons" role="presentation">home</i>Home</a>
-          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">star</i>Favorites</a>
-          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">add</i>Add</a>
+          <a class="mdl-navigation__link" href="#fav"><i class="material-icons" role="presentation">star</i>Favorites</a>
+          <a class="mdl-navigation__link" href="#add"><i class="material-icons" role="presentation">add</i>Add</a>
+          <a class="mdl-navigation__link" href="https://www.uic.edu/"><i class="material-icons" role="presentation">info</i>About UIC</a>
           <a class="msg mdl-navigation__link"><i class="material-icons" role="presentation">cloud</i>Can't Fetch Weather</a>
           <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+          <a class="mdl-navigation__link" href="#help"><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
       </div>
         
       <main class="mdl-layout__content">
             <!--Map Page-->
           <div id="map"></div>
+          <div id="fav"></div>
+          <div id="help"></div>
       </main> 
     </div>
     
@@ -125,7 +128,7 @@
             var temp = responce.main.temp;
             temp = Math.round(((temp-273.15)*(9/5) +32));
             $(".msg").empty();
-            $(".msg").append("It is "+temp+"&#176;F degrees in Chicago right now");
+            $(".msg").append("It is "+temp+"&#176;F degrees on campus right now.");
         });            
     </script>
     
