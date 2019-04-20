@@ -49,7 +49,7 @@
     <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout--fixed-header">
       <header class="header mdl-layout__header">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title"><img id="headerlogo" src="images/uicwt.PNG"> Bathroom Finder</span>
+          <span id="logohome" class="mdl-layout-title"><img id="headerlogo" src="images/uicwt.PNG"> Bathroom Finder</span>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -113,12 +113,14 @@
     <script>
         $(document).ready(function() {
             $("#map").show();
-            
             function hidescreen(){
                 $(".content").hide();
             }
             $("#logo").on("click", function(){
                 document.location.reload();
+            });
+            $("#logohome").on("click", function(){
+                initMap();    
             });
         });  
         
@@ -200,9 +202,9 @@
         
         //Initiate Google Maps to UIC coordinates on Start
         function initMap() {
-            var uic = {lat: 41.8698, lng: -87.6696};
+            var uic = {lat: 41.8698, lng: -87.6496};
             map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 15,
+              zoom: 16,
               center: uic
             });
             
