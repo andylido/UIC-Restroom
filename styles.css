@@ -1,4 +1,48 @@
+.fluidlogo {
+  overflow: hidden;
+  height: 50px;
+  width: 50px;
+  margin-right: 2px;
+}
 
+.fluidlogo .picture {
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+}
+
+
+.fluidlogo:hover .picture::before {
+  height: 100%;
+}
+
+
+.fluidlogo .picture img {
+  width: 100%;
+  border-radius: 100%;
+  transform: scale(1);
+  transition: all 0.9s ease 0s;
+}
+
+.fluidlogo:hover .picture img {
+  transform: scale(0.9);
+  background-color: #001E62;
+}
+
+.fluidlogo{
+  transition: all 0.5s ease 0s;
+}
+
+
+
+
+
+
+.my-card .card{
+  height: 350px;
+  width: 350px;
+  display: inline-block;
+}
 .mdl-layout__header-row{
   background-color: #00AEC7!important;
 }

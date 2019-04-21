@@ -2,273 +2,291 @@
 
 <html lang="en">
     
-  <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138493790-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138493790-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-      gtag('config', 'UA-138493790-2');
-    </script>
+          gtag('config', 'UA-138493790-2');
+        </script>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Find-a-Potty</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <title>UIC Bathroom Finder</title>
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="images/uic.PNG">
+        <!-- Add to homescreen for Chrome on Android -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="images/uic.PNG">
 
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <link rel="apple-touch-icon-precomposed" href="images/uic.PNG">
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+        <link rel="apple-touch-icon-precomposed" href="images/uic.PNG">
 
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
+        <!-- Tile icon for Win8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#3372DF">
 
-    <link rel="shortcut icon" href="images/uic.PNG">
+        <link rel="shortcut icon" href="images/uic.PNG">
+        
+        <!--Style Sheets and Material Design-->
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <!--<link rel="manifest" href='./manifest.json'> -->
+
+        <style>
+            #view-source {
+              position: fixed;
+              display: block;
+              right: 0;
+              bottom: 0;
+              margin-right: 40px;
+              margin-bottom: 40px;
+              z-index: 900;
+            }
+        </style>
+    </head>
     
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <!--<link rel="manifest" href='./manifest.json'> -->
-      
-    <style>
-        #view-source {
-          position: fixed;
-          display: block;
-          right: 0;
-          bottom: 0;
-          margin-right: 40px;
-          margin-bottom: 40px;
-          z-index: 900;
-        }
-    </style>
-      
-  </head>
-    
-  <body>
-      
-    <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout--fixed-header">
-      <header class="header mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <span id="logohome" class="mdl-layout-title"><img id="headerlogo" src="images/uicwt.PNG"> Bathroom Finder</span>
-          <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+    <body>
+        <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout--fixed-header">
+          <header class="header mdl-layout__header">
+            <div class="mdl-layout__header-row">
+              <div id="logohome" class="fluidlogo"><div class="picture"><img class="img-fluid" src="images/uicwt.PNG"></div><div class="card-content"><h4 class="type"></h4></div></div><span id="logohome" class="mdl-layout-title">Bathroom Finder</span>
+              <div class="mdl-layout-spacer"></div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+                  <i class="material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                  <input class="mdl-textfield__input" type="text" id="search">
+                  <label class="mdl-textfield__label" for="search">Enter your query...</label>
+                </div>
+              </div>
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                <i class="material-icons">more_vert</i>
+              </button>
+              <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+                <a href="#about"><li class="mdl-menu__item">About</li></a>
+                <li class="mdl-menu__item">Legal information</li>
+              </ul>
             </div>
+          </header>
+
+          <div class="drawer mdl-layout__drawer">
+            <header class="drawer-header">
+              <div id="logo"><img src="images/uic.PNG" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
+            </header>
+            <nav class="navigation mdl-navigation">
+              <a class="mdl-navigation__link" href="#map"><i class=" material-icons" role="presentation">home</i>Home</a>
+              <a class="mdl-navigation__link" href="#fav"><i class="material-icons" role="presentation">star</i>Favorites</a>
+              <a class="mdl-navigation__link" href="#add"><i class="material-icons" role="presentation">add</i>Add</a>
+              <a class="mdl-navigation__link" href="https://www.uic.edu/"><i class="material-icons" role="presentation">info</i>About UIC</a>
+              <a class="msg mdl-navigation__link">Can't Fetch Weather</a>
+              <div class="mdl-layout-spacer"></div>
+              <a class="mdl-navigation__link" href="#help"><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+            </nav>
           </div>
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-            <i class="material-icons">more_vert</i>
-          </button>
-          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-            <li class="mdl-menu__item">About</li>
-            <li class="mdl-menu__item">Legal information</li>
-          </ul>
+
+          <main class="mdl-layout__content">
+                <!--Map Page-->
+              <div id="map"></div>
+              <div id="fav"></div>
+              <div id="help"></div>
+              <div id="about"></div>
+          </main> 
         </div>
-      </header>
         
-      <div class="drawer mdl-layout__drawer">
-        <header class="drawer-header">
-          <div id="logo"><img src="images/uic.PNG" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
-        </header>
-        <nav class="navigation mdl-navigation">
-          <a class="mdl-navigation__link" href="#map"><i class=" material-icons" role="presentation">home</i>Home</a>
-          <a class="mdl-navigation__link" href="#fav"><i class="material-icons" role="presentation">star</i>Favorites</a>
-          <a class="mdl-navigation__link" href="#add"><i class="material-icons" role="presentation">add</i>Add</a>
-          <a class="mdl-navigation__link" href="https://www.uic.edu/"><i class="material-icons" role="presentation">info</i>About UIC</a>
-          <a class="msg mdl-navigation__link"><i class="material-icons" role="presentation">cloud</i>Can't Fetch Weather</a>
-          <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href="#help"><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
-        </nav>
-      </div>
-        
-      <main class="mdl-layout__content">
-            <!--Map Page-->
-          <div id="map"></div>
-          <div id="fav"></div>
-          <div id="help"></div>
-      </main> 
-    </div>
-    
-    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
-    <script type="text/javascript" src="javascript.js"></script>
-    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-     
-    <!-- Service Worker -->
-    <script>
-        //register the service worker for offline use
-        //if ('serviceWorker' in navigator) {
-        //navigator.serviceWorker
-         //.register('./sw.js')
-         //.then(function() { console.log('Service Worker Registered'); });
-        //}
-    </script>
-     
-    <!-- Run on Application Launch -->
-    <script>
-        $(document).ready(function() {
-            $("#map").show();
-            function hidescreen(){
-                $(".content").hide();
-            }
-            $("#logo").on("click", function(){
-                document.location.reload();
-            });
-            $("#logohome").on("click", function(){
-                initMap();    
-            });
-        });  
-        
-        //Make an Ajax Call for Weather using OpenWeathermap API
-        var weatherurl = "https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=6c40b84bd4c1b447c8ff9daa4e5c3e1a";
-        $.get(weatherurl, function(responce){
-            var temp = responce.main.temp;
-            temp = Math.round(((temp-273.15)*(9/5) +32));
-            $(".msg").empty();
-            $(".msg").append("It is "+temp+"&#176;F degrees on campus right now.");
-        });            
-    </script>
-    
-    <!-- Index Database using Dexie -->
-    <script>
-        //db = new Dexie("Bathroom_database");
-        //db.version(2).stores({
-            //Store something
-            //bathroom: "++id, location"
-        //});
-    </script>
-    
-    <!-- Google Maps API for visualization-->
-    <script>
-        function geolocation(controlDiv, map) {
-            // Set CSS for the location button border.
-            var controlUI = document.createElement('div');
-            controlUI.style.backgroundColor = '#fff';
-            controlUI.style.border = '2px solid #fff';
-            controlUI.style.borderRadius = '3px';
-            controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-            controlUI.style.cursor = 'pointer';
-            controlUI.style.marginBottom = '22px';
-            controlUI.style.textAlign = 'center';
-            controlUI.title = 'Click to find current location';
-            controlDiv.appendChild(controlUI);
+        <!-- Javascript Packages -->
+        <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+        <script type="text/javascript" src="javascript.js"></script>
+        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-            // Set CSS for the location button interior.
-            var controlText = document.createElement('div');
-            controlText.style.color = 'rgb(25,25,25)';
-            controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-            controlText.style.fontSize = '16px';
-            controlText.style.lineHeight = '38px';
-            controlText.style.paddingLeft = '5px';
-            controlText.style.paddingRight = '5px';
-            controlText.innerHTML = 'Current Location';
-            controlUI.appendChild(controlText);
+        <!-- Service Worker -->
+        <script>
+            //register the service worker for offline use
+            //if ('serviceWorker' in navigator) {
+            //navigator.serviceWorker
+             //.register('./sw.js')
+             //.then(function() { console.log('Service Worker Registered'); });
+            //}
+        </script>
 
-            // Setup the click event to get current geolocation
-            controlUI.addEventListener('click', function() {
-              if (navigator.geolocation) {
-                  navigator.geolocation.getCurrentPosition(function(position) {
-                    var currentpos = {
-                      lat: position.coords.latitude,
-                      lng: position.coords.longitude
-                    };
-                    map.setCenter(currentpos);
-                    var mylocationmarker = new google.maps.Marker({
-                      position: currentpos,
-                      map: map,
-                      title: 'Current Location'
-                    });
-                }, function() {
-                        handleLocationError(true, infoWindow, map.getCenter());
-                    });
-                } else {
-                  // Browser doesn't support Geolocation
-                  handleLocationError(false, infoWindow, map.getCenter());
+        <!-- Run on Application Launch -->
+        <script>
+            $(document).ready(function() {
+                $("#map").show();
+                function hidescreen(){
+                    $(".content").hide();
                 }
-                function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent(browserHasGeolocation ?
-                                          'Error: The Geolocation service failed.' :
-                                          'Error: Your browser doesn\'t support geolocation.');
-                    infoWindow.open(map);
-                }
-            });
-        }
-        
-        //Initiate Google Maps to UIC coordinates on Start
-        function initMap() {
-            var uic = {lat: 41.8698, lng: -87.6496};
-            map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 16,
-              center: uic
-            });
-            
-            //Make an Ajax Call for Bathroom locations using restdb.io API
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://uicbr-de20.restdb.io/rest/br-locations-1",
-                "method": "GET",
-                "headers": {
-                  "content-type": "application/json",
-                  "x-apikey": "5cbab22f22f4c217d01b6da3",
-                  "cache-control": "no-cache"
-                }
-            }
+                $("#logo").on("click", function(){
+                    document.location.reload();
+                });
+                $("#logohome").on("click", function(){
+                    initMap();    
+                });
+            });  
 
-            $.ajax(settings).done(function (response) {
-                //console.log(response);
-                var data = response;
-                $.each(data, function(i,v){
-                    var building = v.building;
-                    var type = v.type;
-                    var location = v.location;
-                    var marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(parseFloat(v.lat),parseFloat(v.lng)),
-                        map: map,
-                        title: building + ' - ' + type //marker hover information pop up
-                    });
-                    
-                    //Content for pop up display on marker click
-                    var contentString = "Building: "+building+"<br>" + 
-                        "Type: " + type + "<br>" + 
-                        "Location: " + location + "<br>";
-                    google.maps.event.addListener(marker, 'click', function() {
+            //Make an Ajax Call for Weather using OpenWeathermap API
+            var weatherurl = "https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=6c40b84bd4c1b447c8ff9daa4e5c3e1a";
+            $.get(weatherurl, function(responce){
+                var temp = responce.main.temp;
+                temp = Math.round(((temp-273.15)*(9/5) +32));
+                $(".msg").empty();
+                $(".msg").append("It is "+temp+"&#176;F on campus right now.");
+            });            
+        </script>
+
+        <!-- Index Database using Dexie -->
+        <script>
+            //db = new Dexie("Bathroom_database");
+            //db.version(2).stores({
+                //Store something
+                //bathroom: "++id, location"
+            //});
+        </script>
+
+        <!-- Google Maps API for visualization-->
+        <script>
+            function geolocation(controlDiv, map) {
+                // Set CSS for the location button border.
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#fff';
+                controlUI.style.border = '2px solid #fff';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '22px';
+                controlUI.style.textAlign = 'center';
+                controlUI.style.margin = '10px';
+                controlUI.title = 'Click to find current location';
+                controlDiv.appendChild(controlUI);
+
+                // Set CSS for the location button interior.
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(25,25,25)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = '16px';
+                controlText.style.lineHeight = '38px';
+                controlText.style.paddingLeft = '5px';
+                controlText.style.paddingRight = '5px';
+                controlText.innerHTML = 'My Location';
+                controlUI.appendChild(controlText);
+
+                // Setup the click event to get current geolocation
+                controlUI.addEventListener('click', function() {
+                  if (navigator.geolocation) {
+                      navigator.geolocation.getCurrentPosition(function(position) {
+                        var currentpos = {
+                          lat: position.coords.latitude,
+                          lng: position.coords.longitude
+                        };
+                        map.setCenter(currentpos);
+                        var mylocationmarker = new google.maps.Marker({
+                          position: currentpos,
+                          map: map,
+                          draggable: true,
+                          title: 'Current Location'
+                          });
+                          var contentString = "Your Location";
+                          google.maps.event.addListener(mylocationmarker, 'click', function() {
                             infowindow = new google.maps.InfoWindow({
-                                content: contentString
+                                content:'Current Location'
                             });
-                            infowindow.open(map, marker);
+                            infowindow.open(map, mylocationmarker);
+                            
+                        });
+                    }, function() {
+                            handleLocationError(true, infoWindow, map.getCenter());
+                        });
+                    } else {
+                      // If Geolocation unable to run then:
+                      handleLocationError(false, infoWindow, map.getCenter());
+                    }
+                    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent(browserHasGeolocation ?
+                                              'Error: The Geolocation service failed.' :
+                                              'Error: Your browser doesn\'t support geolocation.');
+                        infoWindow.open(map);
+                    }
+                });
+            }
+
+            //Initiate Google Maps to UIC coordinates on Start
+            function initMap() {
+                var uic = {lat: 41.8698, lng: -87.6496};
+                map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 16,
+                  center: uic
+                });
+
+                //Make an Ajax Call for Bathroom locations using restdb.io API
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://uicbr-de20.restdb.io/rest/br-locations-1",
+                    "method": "GET",
+                    "headers": {
+                      "content-type": "application/json",
+                      "x-apikey": "5cbab22f22f4c217d01b6da3",
+                      "cache-control": "no-cache"
+                    }
+                }
+
+                $.ajax(settings).done(function (response) {
+                    //console.log(response);
+                    var data = response;
+                    $.each(data, function(i,v){
+                        var building = v.building;
+                        var type = v.type;
+                        var location = v.location;
+                        var marker = new google.maps.Marker({
+                            icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            scale: 7,
+                            strokeColor: '#001E62'
+                          },
+                            position: new google.maps.LatLng(parseFloat(v.lat),parseFloat(v.lng)),
+                            map: map,
+                            title: building + ' - ' + type //marker hover information pop up
+                        });
+
+                        //Content for pop up display on marker click
+                        var contentString = "Building: "+building+"<br>" + 
+                            "Type: " + type + "<br>" + 
+                            "Location: " + location + "<br>";
+                        google.maps.event.addListener(marker, 'click', function() {
+                                infowindow = new google.maps.InfoWindow({
+                                    content: contentString
+                                });
+                                infowindow.open(map, marker);
+                        });
                     });
                 });
-            });
 
-            // Create the DIV to hold the geolocation button
-            var geolocationDiv = document.createElement('div');
-            var geo = new geolocation(geolocationDiv, map);
+                // Create the DIV to hold the geolocation button
+                var geolocationDiv = document.createElement('div');
+                var geo = new geolocation(geolocationDiv, map);
 
-            geolocationDiv.index = 1;
-            map.controls[google.maps.ControlPosition.TOP_CENTER].push(geolocationDiv);
-        } 
-    </script>
+                geolocationDiv.index = 1;
+                map.controls[google.maps.ControlPosition.TOP_CENTER].push(geolocationDiv);
+            } 
+        </script>
+        
+        
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdolrp_YYYRPBKtDNKONpVTprkieSdPNY&callback=initMap">
+        </script>  
       
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdolrp_YYYRPBKtDNKONpVTprkieSdPNY&callback=initMap">
-    </script>  
-      
-  </body>
+    </body>
 </html>
