@@ -56,6 +56,7 @@
     </head>
     
     <body>
+        <!-- Top Bar -->
         <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout--fixed-header">
           <header class="header mdl-layout__header">
             <div class="mdl-layout__header-row">
@@ -65,32 +66,35 @@
                 <i class="material-icons">more_vert</i>
               </button>
               <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-                <a href="#about"><li id="about-btn" class="mdl-menu__item">About</li></a>
-                <li class="mdl-menu__item">Legal information</li>
+                <a><li id="about-btn" class="mdl-menu__item">About</li></a>
               </ul>
             </div>
           </header>
-
+          
+          <!-- Pop-Out Drawer -->
           <div class="drawer mdl-layout__drawer">
             <header class="drawer-header">
               <div id="logo"><img src="images/uic.PNG" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
             </header>
             <nav class="navigation mdl-navigation">
-              <a class="mdl-navigation__link" href="#map"><i class=" material-icons" role="presentation">home</i>Home</a>
-              <a class="mdl-navigation__link" href="#fav"><i class="material-icons" role="presentation">star</i>Favorites</a>
-              <a class="mdl-navigation__link" href="#add"><i class="material-icons" role="presentation">add</i>Add</a>
+              <a id="home" class="mdl-navigation__link"><i class=" material-icons" role="presentation">home</i>Home</a>
+              <a id="favorite" class="mdl-navigation__link"><i class="material-icons" role="presentation">star</i>Favorites</a>
               <a class="mdl-navigation__link" href="https://www.uic.edu/" target="_blank"><i class="material-icons" role="presentation">info</i>About UIC</a>
-              <a class="msg mdl-navigation__link">Can't Fetch Weather</a>
+              <a class="msg mdl-navigation__link" href="https://weather.com/weather/today/l/USIL0225:1:US" target="_blank">Can't Fetch Weather</a>
               <div class="mdl-layout-spacer"></div>
-              <a class="mdl-navigation__link" href="#help"><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+              <a class="mdl-navigation__link" href="#help"><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span>Help</a>
             </nav>
           </div>
-
+        
+          <!-- Screens -->
           <main class="mdl-layout__content">
-                <!--Map Page-->
+              <!-- Map Page -->
               <div id="map" class="pages"></div>
+              <!-- Favorites Page -->
               <div id="fav" class="pages"></div>
+              <!-- Help Page -->
               <div id="help" class="pages"></div>
+              <!-- About Page -->
               <div id="about" class="pages">
                 <a href="https://github.com/andylido/Project_B" target="_blank"><img src="images/AL.jpg" class="pic"></a>
                 <br><br>
@@ -148,6 +152,16 @@
                     $("#about").show();
                 });
                 
+                $("#home").on("click", function(){
+                    hidescreen() 
+                    $("#map").show();
+                });
+                
+                $("#favorite").on("click", function(){
+                    hidescreen() 
+                    $("#fav").show();
+                });
+                
                 function hidescreen(){
                     $(".pages").hide();
                 }
@@ -172,7 +186,7 @@
             });
         </script>
 
-        <!-- Google Maps API for visualization-->
+        <!-- Google Maps API-->
         <script>
             function geolocation(controlDiv, map) {
                 // Set CSS for the location button border.
@@ -239,7 +253,7 @@
                 });
             }
 
-            //Initiate Google Maps to UIC coordinates on Start
+            // Initiate Google Maps to UIC coordinates on Start
             function initMap() {
                 var uic = {lat: 41.8698, lng: -87.6496};
                 map = new google.maps.Map(document.getElementById('map'), {
@@ -247,7 +261,7 @@
                   center: uic
                 });
 
-                //Make an Ajax Call for Bathroom locations using restdb.io API
+                // Make an Ajax Call for Bathroom locations using restdb.io API
                 var settings = {
                     "async": true,
                     "crossDomain": true,
@@ -259,7 +273,8 @@
                       "cache-control": "no-cache"
                     }
                 }
-
+                
+                // Card display for Markers
                 $.ajax(settings).done(function (response) {
                     //console.log(response);
                     var data = response;
@@ -278,7 +293,7 @@
                             title: building + ' - ' + type //marker hover information pop up
                         });
 
-                        //Content for pop up display on marker click
+                        //  Content for pop up display on marker click
                         var x = '('+building+')';
                         var contentString = '<div class="row"><div class="col s12 m6"><div class="card blue-grey darken-1"><div class="card-content white-text"<span class="card-title" style="font-size: 20px">'+building+'</span><p>'+type+'</p><p>Details: '+location+'</p></div><div class="card-action"><button onclick="myFav()" class="favbtn mdc-button"><i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i><span class="mdc-button__label"></span></button></div></div></div></div>';
                         

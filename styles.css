@@ -158,7 +158,7 @@ html, body {
 }
 .navigation .mdl-navigation__link .material-icons {
   font-size: 24px;
-  color: white!important;
+  color: white;
   margin-right: 32px;
 }
 
