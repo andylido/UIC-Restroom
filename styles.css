@@ -33,8 +33,15 @@
   transition: all 0.5s ease 0s;
 }
 
-
-
+.pic {
+  border-radius: 8px; width: 110px;
+}
+#about {
+  margin: 20px;
+}
+#my_button:hover{
+  background-color:#3B6EC2;
+} 
 
 
 
@@ -153,6 +160,10 @@ html, body {
   font-size: 24px;
   color: white!important;
   margin-right: 32px;
+}
+
+.content {
+  max-width: 1080px;
 }
 
 .mdl-button--icon{

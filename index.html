@@ -61,20 +61,11 @@
             <div class="mdl-layout__header-row">
               <div id="logohome" class="fluidlogo"><div class="picture"><img class="img-fluid" src="images/uicwt.PNG"></div><div class="card-content"><h4 class="type"></h4></div></div><span id="logohome" class="mdl-layout-title">Bathroom Finder</span>
               <div class="mdl-layout-spacer"></div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                  <i class="material-icons">search</i>
-                </label>
-                <div class="mdl-textfield__expandable-holder">
-                  <input class="mdl-textfield__input" type="text" id="search">
-                  <label class="mdl-textfield__label" for="search">Enter your query...</label>
-                </div>
-              </div>
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
                 <i class="material-icons">more_vert</i>
               </button>
               <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-                <a href="#about"><li class="mdl-menu__item">About</li></a>
+                <a href="#about"><li id="about-btn" class="mdl-menu__item">About</li></a>
                 <li class="mdl-menu__item">Legal information</li>
               </ul>
             </div>
@@ -88,7 +79,7 @@
               <a class="mdl-navigation__link" href="#map"><i class=" material-icons" role="presentation">home</i>Home</a>
               <a class="mdl-navigation__link" href="#fav"><i class="material-icons" role="presentation">star</i>Favorites</a>
               <a class="mdl-navigation__link" href="#add"><i class="material-icons" role="presentation">add</i>Add</a>
-              <a class="mdl-navigation__link" href="https://www.uic.edu/"><i class="material-icons" role="presentation">info</i>About UIC</a>
+              <a class="mdl-navigation__link" href="https://www.uic.edu/" target="_blank"><i class="material-icons" role="presentation">info</i>About UIC</a>
               <a class="msg mdl-navigation__link">Can't Fetch Weather</a>
               <div class="mdl-layout-spacer"></div>
               <a class="mdl-navigation__link" href="#help"><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
@@ -97,10 +88,24 @@
 
           <main class="mdl-layout__content">
                 <!--Map Page-->
-              <div id="map"></div>
-              <div id="fav"></div>
-              <div id="help"></div>
-              <div id="about"></div>
+              <div id="map" class="pages"></div>
+              <div id="fav" class="pages"></div>
+              <div id="help" class="pages"></div>
+              <div id="about" class="pages">
+                <a href="https://github.com/andylido/Project_B" target="_blank"><img src="images/AL.jpg" class="pic"></a>
+                <br><br>
+                <p>Welcome to Bathroom Finder, this intuitive application allows users to locate bathrooms around UIC since the campus is so wide and contains so many unique buldings around the city.</p>
+                <div>
+                    Instructions:
+                    <ul>
+                        <li>Select markers on the map to see more detail about bathroom location.</li> 
+                        <li>Use your device to find your locatin to see the closest bathroom to you.</li> 
+                        <li>Add a bathroom to your personal favorites for future references.</li>
+                    </ul>
+                </div>
+                <br>
+                <p>Andy Li is an independent developer, his github can be access by clicking on the developer profile picture.</p>
+              </div>
           </main> 
         </div>
         
@@ -124,16 +129,28 @@
         <!-- Run on Application Launch -->
         <script>
             $(document).ready(function() {
+                
+                hidescreen()
                 $("#map").show();
-                function hidescreen(){
-                    $(".content").hide();
-                }
+
                 $("#logo").on("click", function(){
                     document.location.reload();
                 });
+                
                 $("#logohome").on("click", function(){
-                    initMap();    
+                    initMap();
+                    hidescreen() 
+                    $("#map").show();
                 });
+                
+                $("#about-btn").on("click", function(){
+                    hidescreen() 
+                    $("#about").show();
+                });
+                
+                function hidescreen(){
+                    $(".pages").hide();
+                }
             });  
 
             //Make an Ajax Call for Weather using OpenWeathermap API
@@ -280,7 +297,7 @@
                 var geo = new geolocation(geolocationDiv, map);
 
                 geolocationDiv.index = 1;
-                map.controls[google.maps.ControlPosition.TOP_CENTER].push(geolocationDiv);
+                map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(geolocationDiv);
             }
             function myFav(){
                 console.log('fav btn pressed');
