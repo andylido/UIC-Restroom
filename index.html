@@ -16,7 +16,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>UIC Bathroom Finder</title>
+        <title>UIC Restroom Finder</title>
 
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
@@ -61,7 +61,7 @@
         <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout--fixed-header">
           <header class="header mdl-layout__header">
             <div class="mdl-layout__header-row">
-              <div id="logohome" class="fluidlogo"><div class="picture"><img class="img-fluid" src="images/uicwt.PNG"></div><div class="card-content"><h4 class="type"></h4></div></div><span id="logohome" class="mdl-layout-title">Bathroom Finder</span>
+              <div id="logohome" class="fluidlogo"><div class="picture"><img class="img-fluid" src="images/uicwt.PNG"></div><div class="card-content"><h4 class="type"></h4></div></div><span id="logohome" class="mdl-layout-title">Restroom Finder</span>
               <div class="mdl-layout-spacer"></div>
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
                 <i class="material-icons">more_vert</i>
@@ -81,10 +81,10 @@
               <a id="home" class="mdl-navigation__link"><i class="material-icons" role="presentation">home</i>Home</a>
               <a id="favorite" class="mdl-navigation__link"><i class="material-icons" role="presentation">star</i>Favorites</a>
               <a id="add" class="mdl-navigation__link"><i class="material-icons" role="presentation">add</i>Add</a>
-              <a class="mdl-navigation__link" href="https://www.uic.edu/" target="_blank"><i class="material-icons" role="presentation">info</i>About UIC</a>
+              <a class="mdl-navigation__link" href="https://www.uic.edu/" target="_blank" style="text-decoration: none"><i class="material-icons" role="presentation">info</i>About UIC</a>
               <a class="msg mdl-navigation__link" href="https://weather.com/weather/today/l/USIL0225:1:US" target="_blank">Can't Fetch Weather</a>
               <div class="mdl-layout-spacer"></div>
-              <a class="mdl-navigation__link" href="#help"><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span>Help</a>
+              <a id="help-btn" class="mdl-navigation__link"><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span>Help</a>
             </nav>
           </div>
         
@@ -92,10 +92,16 @@
           <main class="mdl-layout__content">
               <!-- Map Page -->
               <div id="map" class="pages"></div>
+              
               <!-- Favorites Page -->
+              <div id="favpage" class="pages">
+                  <h1 class="section-heading">Favorites</h1>
+              </div>
+              
+              <!-- Add a Location Page -->
               <div id="addlocation" class="pages">
-                <div class="content" id="search">
-                        <h2 class="section-heading">New Restroom Location</h2>
+                <div class="content forum" id="search">
+                        <h2 class="section-heading">Add New Restroom Location</h2>
                         <div class="col-md-12">
                             <div class="col-md-6">
                                 <h5>Building Name</h5>
@@ -106,7 +112,7 @@
                                  <select id=gender>
                                     <option value="Men's Restroom">Men</option>
                                     <option value="Women's Restroom">Women</option>
-                                    <option value="All Gender Restroom">All Gender Restroom</option>
+                                    <option value="All Gender Restroom">All Gender</option>
                                 </select> 
                             </div><br>
                             <div class="col-md-6">
@@ -114,14 +120,13 @@
                                 <input class="form-control" type="text" id="desp" placeholder="i.e. 2nd Floor; Next to Amazon" required="required"/><br>
                             </div>
                             <br>
-                            <div class="col-lg-12">
-                                <button id="submit" class="btn btn-sm text-uppercase">Submit</button>
+                            <div class="col-md-1">
+                                <button id="submit" class="btn btn-sm text-uppercase" required="required">Submit</button>
                             </div>
                         </div>
                 </div>
               </div>
-              <!-- Help Page -->
-              <div id="help" class="pages"></div>
+              
               <!-- About Page -->
               <div id="about" class="pages">
                 <a href="https://github.com/andylido/Project_B" target="_blank"><img src="images/AL.jpg" class="pic"></a>
@@ -163,37 +168,24 @@
             $(document).ready(function() {
                 
                 hidescreen()
-                $("#map").show();
                 
+                //Screen hide/show event handlers
+                $("#map").show();
                 function hidescreen(){
                     $(".pages").hide();
                 }
-
-                $("#logo").on("click", function(){
-                    document.location.reload();
-                });
+                $("#logo").on("click", function(){document.location.reload();});
+                $("#logohome").on("click", function(){initMap();hidescreen(),$("#map").show();});
+                $("#about-btn").on("click", function(){hidescreen(),$("#about").show();});
+                $("#help-btn").on("click", function(){hidescreen(),$("#about").show();});
+                $("#home").on("click", function(){hidescreen(), $("#map").show();});
+                $("#add").on("click", function(){hidescreen(),$("#addlocation").show();});
+                $("#favorite").on("click", function(){hidescreen(),$("#favpage").show();});
+                $("#submit").on("click", function(){
+                $("#building").val('');$("#desp").val('');alert("Location submitted for review.\nWhen validated it will be added onto the map.\n\n Thanks!");});
                 
-                $("#logohome").on("click", function(){
-                    initMap();
-                    hidescreen() 
-                    $("#map").show();
-                });
-                
-                $("#about-btn").on("click", function(){
-                    hidescreen() 
-                    $("#about").show();
-                });
-                
-                $("#home").on("click", function(){
-                    hidescreen() 
-                    $("#map").show();
-                });
-                
-                $("#add").on("click", function(){
-                    hidescreen() 
-                    $("#addlocation").show();
-                });
-                
+                //Closwer Drawer when an item is selected
+                $(".mdl-navigation__link").on('click', function() {$( '.mdl-layout__drawer, .mdl-layout__obfuscator' ).removeClass( 'is-visible' );});
             });  
 
             //Make an Ajax Call for Weather using OpenWeathermap API
@@ -307,6 +299,7 @@
                 $.ajax(settings).done(function (response) {
                     console.log(response);
                     var data = response;
+                    var prev_infowindow =false;
                     $.each(data, function(i,v){
                         var building = v.building;
                         var type = v.type;
@@ -323,21 +316,19 @@
                         });
 
                         //  Content for pop up display on marker click
-                        var name = '"'+building+'"';
-                        //console.log(name);
-                        var contentString = '<div class="row"><div class="col s12 m6"><div class="card blue-grey darken-1"><div class="card-content white-text"<span class="card-title" style="font-size: 20px">'+building+'</span><p>'+type+'</p><p>Details: '+location+'</p></div><div class="card-action"><button id="favbtn mdc-button"><i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i><span class="mdc-button__label"></span></button></div></div></div></div>';
-                        google.maps.event.addListener(marker, 'click', function() {
-                                infowindow = new google.maps.InfoWindow({
-                                    content: contentString
-                                });
-                            infowindow.open(map, marker);
-                            
-                            });
-                        
+                        var contentString = '<div class="row"><div class="col s12 m6"><div class="card blue-grey darken-1"><div class="card-content white-text"<span class="card-title" style="font-size: 20px">'+building+'</span><p>'+type+'</p><p>Details: '+location+'</p></div><div class="card-action"><button id="favbtn" class="mdc-button"><i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i><span class="mdc-button__label"></span></button></div></div></div></div>';
+                        var infowindow = new google.maps.InfoWindow({
+                                content: contentString
                         });
-                        var fbtn = $("#favbtn");
-                        google.maps.event.addDomListener(fbtn, 'click', function(){
-                                console.log(building);
+                        
+                        google.maps.event.addListener(marker, 'click', function() {
+  
+                            if( prev_infowindow ) {
+                               prev_infowindow.close();
+                            }
+                            infowindow.open(map, marker);
+                            prev_infowindow = infowindow;
+                        });
                     });
                 });
 
