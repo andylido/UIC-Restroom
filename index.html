@@ -77,8 +77,9 @@
               <div id="logo"><img src="images/uic.PNG" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
             </header>
             <nav class="navigation mdl-navigation">
-              <a id="home" class="mdl-navigation__link"><i class=" material-icons" role="presentation">home</i>Home</a>
+              <a id="home" class="mdl-navigation__link"><i class="material-icons" role="presentation">home</i>Home</a>
               <a id="favorite" class="mdl-navigation__link"><i class="material-icons" role="presentation">star</i>Favorites</a>
+              <a id="add" class="mdl-navigation__link"><i class="material-icons" role="presentation">add</i>Add</a>
               <a class="mdl-navigation__link" href="https://www.uic.edu/" target="_blank"><i class="material-icons" role="presentation">info</i>About UIC</a>
               <a class="msg mdl-navigation__link" href="https://weather.com/weather/today/l/USIL0225:1:US" target="_blank">Can't Fetch Weather</a>
               <div class="mdl-layout-spacer"></div>
@@ -103,8 +104,8 @@
                     Instructions:
                     <ul>
                         <li>Select markers on the map to see more detail about bathroom location.</li> 
-                        <li>Use your device to find your locatin to see the closest bathroom to you.</li> 
-                        <li>Add a bathroom to your personal favorites for future references.</li>
+                        <li>Use your device to find your location to see the closest bathroom to you.</li> 
+                        <li>Add a bathroom to your personal favorites for future reference.</li>
                     </ul>
                 </div>
                 <br>
@@ -136,6 +137,10 @@
                 
                 hidescreen()
                 $("#map").show();
+                
+                function hidescreen(){
+                    $(".pages").hide();
+                }
 
                 $("#logo").on("click", function(){
                     document.location.reload();
@@ -162,9 +167,6 @@
                     $("#fav").show();
                 });
                 
-                function hidescreen(){
-                    $(".pages").hide();
-                }
             });  
 
             //Make an Ajax Call for Weather using OpenWeathermap API
