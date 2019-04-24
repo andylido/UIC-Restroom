@@ -1,8 +1,8 @@
 {
-  "name": "UIC Potty Finder",
+  "name": "UIC Bathroom Finder",
   "short_name": "UIC Bathroom",
   "icons": [ {
-        "src": "/images/UIC.png",
+        "src": "/images/UIC1.png",
         "type": "image/png",
         "sizes": "144x144",
         "border-radius": "8px"

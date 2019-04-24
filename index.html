@@ -20,25 +20,22 @@
 
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
-        <link rel="icon" sizes="192x192" href="images/uic.PNG">
+        <link rel="icon" sizes="192x192" href="images/uic1.PNG">
 
         <!-- Add to homescreen for Safari on iOS -->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-        <link rel="apple-touch-icon-precomposed" href="images/uic.PNG">
+        <link rel="apple-touch-icon-precomposed" href="images/uic1.PNG">
 
-        <!-- Tile icon for Win8 (144x144 + tile color) -->
-        <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-        <meta name="msapplication-TileColor" content="#3372DF">
-
-        <link rel="shortcut icon" href="images/uic.PNG">
+        <link rel="shortcut icon" href="images/uic1.PNG">
         
-        <!--Style Sheets and Material Design-->
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+        <!--Style Sheets and Material Design link-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+        
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="styles.css">
         <link rel="manifest" href='./manifest.json'>
@@ -75,7 +72,7 @@
           <!-- Pop-Out Drawer -->
           <div class="drawer mdl-layout__drawer">
             <header class="drawer-header">
-              <div id="logo"><img src="images/uic.PNG" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
+              <div id="logo"><img src="images/uic1.png" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
             </header>
             <nav class="navigation mdl-navigation">
               <a id="home" class="mdl-navigation__link"><i class="material-icons" role="presentation">home</i>Home</a>
@@ -100,16 +97,16 @@
               
               <!-- Add a Location Page -->
               <div id="addlocation" class="pages">
-                <div class="content forum" id="search">
+                <div class="content" id="search">
                         <h2 class="section-heading">Add New Restroom Location</h2>
                         <div class="col-md-12">
                             <div class="col-md-6">
                                 <h5>Building Name</h5>
-                                <input class="form-control" type="text" id="building" placeholder="i.e. Student Center East (SCE)" required="required"/><br>
+                                <input class="form-control" type="text" id="buildingname" placeholder="i.e. Student Center East (SCE)" required="required"/><br>
                             </div>
                             <div class="col-md-6">
                                 <h5>Gender</h5>
-                                 <select id=gender>
+                                 <select id=gendertype>
                                     <option value="Men's Restroom">Men</option>
                                     <option value="Women's Restroom">Women</option>
                                     <option value="All Gender Restroom">All Gender</option>
@@ -121,12 +118,13 @@
                             </div>
                             <div class="col-md-6">
                                 <h5>Latitude and Longitude:</h5>
-                                Lat:<input class="form-control col-md-3" type="float" id="lat" placeholder="i.e. 41.871922" required="required"/><br>
-                                Lng:<input class="form-control col-md-3" type="float" id="lng" placeholder="i.e. -87.647948" required="required"/><br>
+                                <button id="getmylocal" class="btn btn-sm text-uppercase">Use My Location</button><br>
+                                Lat:<input class="form-control col-md-3" type="float" id="latnum" placeholder="i.e. 41" required="required"/><br>
+                                Lng:<input class="form-control col-md-3" type="float" id="lngnum" placeholder="i.e. -87" required="required"/><br>
                             </div>
                             <br>
                             <div class="col-md-1">
-                                <button id="submit" class="btn btn-sm text-uppercase" required="required">Submit</button>
+                                <button id="submit" class="btn btn-sm text-uppercase">Submit</button>
                             </div>
                         </div>
                 </div>
@@ -152,9 +150,11 @@
         </div>
         
         <!-- Javascript Packages -->
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        
         <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
         <script type="text/javascript" src="javascript.js"></script>
-        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
@@ -167,52 +167,11 @@
              //.then(function() { console.log('Service Worker Registered'); });
             //}
         </script>
-
-        <!-- Run on Application Launch -->
-        <script>
-            $(document).ready(function() {
-                
-                hidescreen()
-                
-                //Screen hide/show event handlers
-                $("#map").show();
-                function hidescreen(){$(".pages").hide();}
-                $("#logo").on("click", function(){document.location.reload();});
-                $("#logohome").on("click", function(){initMap();hidescreen(),$("#map").show();});
-                $("#about-btn").on("click", function(){hidescreen(),$("#about").show();});
-                $("#help-btn").on("click", function(){hidescreen(),$("#about").show();});
-                $("#home").on("click", function(){hidescreen(), $("#map").show();});
-                $("#add").on("click", function(){hidescreen(),$("#addlocation").show();});
-                $("#favorite").on("click", function(){hidescreen(),$("#favpage").show();});
-                $("#submit").on("click", function(){
-                $("#building").val('');$("#desp").val('');$("#lat").val('');$("#lng").val('');alert("Location submitted for review.\nWhen validated it will be added onto the map.\n\n Thanks!");});
-                
-                //Closwe Drawer when an item is selected
-                $(".mdl-navigation__link").on('click', function() {$( '.mdl-layout__drawer, .mdl-layout__obfuscator' ).removeClass( 'is-visible' );});
-            });  
-
-            //Make an Ajax Call for Weather using OpenWeathermap API
-            var weatherurl = "https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=6c40b84bd4c1b447c8ff9daa4e5c3e1a";
-            $.get(weatherurl, function(responce){
-                var temp = responce.main.temp;
-                temp = Math.round(((temp-273.15)*(9/5) +32));
-                $(".msg").empty();
-                $(".msg").append("It is "+temp+"&#176;F on campus right now.");
-            });            
-        </script>
-
-        <!-- Index Database using Dexie -->
-        <script>
-            db = new Dexie("Bathroom_database");
-            db.version(1).stores({
-                //Store something
-                bathroom: "++id, name, lat, lng, location"
-            });
-        </script>
-
+        
         <!-- Google Maps API-->
         <script>
-            function geolocation(controlDiv, map) {
+            // Use device Geolocation
+            function geolocation(controlDiv, map){
                 // Set CSS for the location button border.
                 var controlUI = document.createElement('div');
                 controlUI.style.backgroundColor = '#fff';
@@ -225,7 +184,6 @@
                 controlUI.style.margin = '10px';
                 controlUI.title = 'Click to find current location';
                 controlDiv.appendChild(controlUI);
-
                 // Set CSS for the location button interior.
                 var controlText = document.createElement('div');
                 controlText.style.color = 'rgb(25,25,25)';
@@ -236,11 +194,10 @@
                 controlText.style.paddingRight = '5px';
                 controlText.innerHTML = 'My Location';
                 controlUI.appendChild(controlText);
-
                 // Setup the click event to get current geolocation
                 controlUI.addEventListener('click', function() {
-                  if (navigator.geolocation) {
-                      navigator.geolocation.getCurrentPosition(function(position) {
+                  if (navigator.geolocation){
+                      navigator.geolocation.getCurrentPosition(function(position){
                         var currentpos = {
                           lat: position.coords.latitude,
                           lng: position.coords.longitude
@@ -253,12 +210,11 @@
                           title: 'Current Location'
                           });
                           var contentString = "Your Location";
-                          google.maps.event.addListener(mylocationmarker, 'click', function() {
+                          google.maps.event.addListener(mylocationmarker, 'click', function(){
                             infowindow = new google.maps.InfoWindow({
                                 content:'Current Location'
                             });
                             infowindow.open(map, mylocationmarker);
-                            
                         });
                     }, function() {
                             handleLocationError(true, infoWindow, map.getCenter());
@@ -267,7 +223,7 @@
                       // If Geolocation unable to run then:
                       handleLocationError(false, infoWindow, map.getCenter());
                     }
-                    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                    function handleLocationError(browserHasGeolocation, infoWindow, pos){
                         infoWindow.setPosition(pos);
                         infoWindow.setContent(browserHasGeolocation ?
                                               'Error: The Geolocation service failed.' :
@@ -276,7 +232,6 @@
                     }
                 });
             }
-
             // Initiate Google Maps to UIC coordinates on Start
             function initMap() {
                 var uic = {lat: 41.8698, lng: -87.6496};
@@ -284,7 +239,6 @@
                   zoom: 16,
                   center: uic
                 });
-
                 // Make an Ajax Call for Bathroom locations using restdb.io API
                 var settings = {
                     "async": true,
@@ -297,10 +251,8 @@
                       "cache-control": "no-cache"
                     }
                 }
-                
                 // Card display for Markers
                 $.ajax(settings).done(function (response) {
-                    console.log(response);
                     var data = response;
                     var prev_infowindow =false;
                     $.each(data, function(i,v){
@@ -317,13 +269,11 @@
                             map: map,
                             title: building + ' - ' + type //marker hover information pop up
                         });
-
-                        //  Content for pop up display on marker click
+                        //  Infowindow for pop up display on marker click
                         var contentString = '<div class="row"><div class="col s12 m6"><div class="card blue-grey darken-1"><div class="card-content white-text"<span class="card-title" style="font-size: 20px">'+building+'</span><p>'+type+'</p><p>Details: '+location+'</p></div><div class="card-action"><button id="favbtn" class="mdc-button"><i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i><span class="mdc-button__label"></span></button></div></div></div></div>';
                         var infowindow = new google.maps.InfoWindow({
                                 content: contentString
                         });
-                        
                         google.maps.event.addListener(marker, 'click', function() {
   
                             if( prev_infowindow ) {
@@ -334,17 +284,85 @@
                         });
                     });
                 });
-
-                
                 // Create the DIV to hold the geolocation button
                 var geolocationDiv = document.createElement('div');
                 var geo = new geolocation(geolocationDiv, map);
-
                 geolocationDiv.index = 1;
                 map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(geolocationDiv);
             }
         </script>
-        
+
+        <script>
+            // Index Database using Dexie
+            db = new Dexie("restroom_database");
+            db.version(1).stores({
+                //Store something
+                restroom: "++id, building, gender, desp, lat, lng"
+            });
+            // Functions upon DOM load
+            $(document).ready(function() {
+                hidescreen()
+                // Screen hide/show event handlers
+                $("#map").show();
+                function hidescreen(){$(".pages").hide();}
+                // Close Drawer when an item is selected
+                $(".mdl-navigation__link").on('click', function() {$( '.mdl-layout__drawer, .mdl-layout__obfuscator' ).removeClass( 'is-visible' );});
+                // On click event handler
+                $("#logo").on("click", function(){document.location.reload();});
+                $("#logohome").on("click", function(){initMap();hidescreen(),$("#map").show();});
+                $("#about-btn").on("click", function(){hidescreen(),$("#about").show();});
+                $("#help-btn").on("click", function(){hidescreen(),$("#about").show();});
+                $("#home").on("click", function(){hidescreen(), $("#map").show();});
+                $("#add").on("click", function(){hidescreen(),$("#addlocation").show();});
+                $("#favorite").on("click", function(){hidescreen(),$("#favpage").show();});
+                $("#getmylocal").on("click", function(){
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            var lat = position.coords.latitude
+                            var lng = position.coords.longitude
+                            $("#latnum").val(position.coords.latitude);
+                            $("#lngnum").val(position.coords.longitude);
+                        });
+                    }else {
+                      // If Geolocation unable to run then:
+                      handleLocationError(false, infoWindow, map.getCenter());
+                    }
+                });
+                // On Sumbitting new location, update indexed db
+                $("#submit").on("click", function() {
+                    // Check if boxes are all filled in
+                    var f1 = document.getElementsByClassName('form-control')[0];
+                    var f2 = document.getElementsByClassName('form-control')[1];
+                    var f3 = document.getElementsByClassName('form-control')[2];
+                    var f4 = document.getElementsByClassName('form-control')[3];
+                    if(f1.checkValidity()&&f2.checkValidity()&&f3.checkValidity()&&f4.checkValidity()) {
+                        var building = $("#buildingname").val();
+                        var gender = $("#gendertype").val();
+                        var desp = $("#desp").val();
+                        var lat = $("#latnum").val();
+                        var lng = $("#lngnum").val();
+                    
+                        db.restroom.put({building:building, gender:gender,desp:desp,lat:lat,lng:lng, date: new Date()});
+                    
+                        $("#buildingname").val('');
+                        $("#desp").val('');
+                        $("#latnum").val('');
+                        $("#lngnum").val('');
+                        alert("Location submitted for review.\nWhen validated it will be added onto the map.\n\n Thanks!");
+                    } else {
+                        alert("Please fill in all columns. If unknown, type: NA");
+                    }
+                });
+            });  
+            //Make an Ajax Call for Weather using OpenWeathermap API
+            var weatherurl = "https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=6c40b84bd4c1b447c8ff9daa4e5c3e1a";
+            $.get(weatherurl, function(responce){
+                var temp = responce.main.temp;
+                temp = Math.round(((temp-273.15)*(9/5) +32));
+                $(".msg").empty();
+                $(".msg").append("It is "+temp+"&#176;F on campus right now.");
+            });            
+        </script>
         
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdolrp_YYYRPBKtDNKONpVTprkieSdPNY&callback=initMap">
