@@ -12,9 +12,5 @@
   "display": "standalone",
   "background_color": "white",
   "theme_color": "red",
-  "prefer_related_applications": true,
-  "related_applications": [{
-    "platform": "play",
-    "id": "com.google.samples.apps.iosched"
-  }]
+  "prefer_related_applications": true
 }
