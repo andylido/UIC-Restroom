@@ -1,6 +1,6 @@
 version = '2.0';
 
-let cacheName = 'user' + version;
+let cacheName = 'BathroomFinder' + version;
 
 self.addEventListener('install', e => {
   let timeStamp = Date.now();
