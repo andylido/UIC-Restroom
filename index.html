@@ -338,9 +338,7 @@
                     // Check if boxes are all filled in
                     var f1 = document.getElementsByClassName('form-control')[0];
                     var f2 = document.getElementsByClassName('form-control')[1];
-                    var f3 = document.getElementsByClassName('form-control')[2];
-                    var f4 = document.getElementsByClassName('form-control')[3];
-                    if(f1.checkValidity()&&f2.checkValidity()&&f3.checkValidity()&&f4.checkValidity()) {
+                    if(f1.checkValidity()&&f2.checkValidity()) {
                         var building = $("#buildingname").val();
                         var gender = $("#gendertype").val();
                         var desp = $("#desp").val();
