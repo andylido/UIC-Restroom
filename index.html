@@ -118,8 +118,8 @@
                             <div class="col-md-6">
                                 <h5>Latitude and Longitude:</h5>
                                 <button id="getmylocal" class="btn btn-sm text-uppercase">Use My Location</button><br>
-                                Lat:<input class="form-control col-md-3" type="float" id="latnum" placeholder="i.e. 41" required="required"/><br>
-                                Lng:<input class="form-control col-md-3" type="float" id="lngnum" placeholder="i.e. -87" required="required"/><br>
+                                Lat:<input class="form-control col-md-3" type="number" id="latnum" placeholder="i.e. 41" required="required"/><br>
+                                Lng:<input class="form-control col-md-3" type="number" id="lngnum" placeholder="i.e. -87" required="required"/><br>
                             </div>
                             <br>
                             <div class="col-md-1">
@@ -258,29 +258,33 @@
                         var building = v.building;
                         var type = v.type;
                         var location = v.location;
-                        var marker = new google.maps.Marker({
-                            icon: {
-                            path: google.maps.SymbolPath.CIRCLE,
-                            scale: 7,
-                            strokeColor: '#001E62'
-                          },
-                            position: new google.maps.LatLng(parseFloat(v.lat),parseFloat(v.lng)),
-                            map: map,
-                            title: building + ' - ' + type //marker hover information pop up
-                        });
-                        //  Infowindow for pop up display on marker click
-                        var contentString = '<div class="row"><div class="col s12 m6"><div class="card blue-grey darken-1"><div class="card-content white-text"<span class="card-title" style="font-size: 20px">'+building+'</span><p>'+type+'</p><p>Details: '+location+'</p></div><div class="card-action"><button id="favbtn" class="mdc-button"><i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i><span class="mdc-button__label"></span></button></div></div></div></div>';
-                        var infowindow = new google.maps.InfoWindow({
-                                content: contentString
-                        });
-                        google.maps.event.addListener(marker, 'click', function() {
-  
-                            if( prev_infowindow ) {
-                               prev_infowindow.close();
-                            }
-                            infowindow.open(map, marker);
-                            prev_infowindow = infowindow;
-                        });
+                        if (!isNaN(v.lat) && v.lat.toString().indexOf('.') != -1 && !isNaN(v.lng) && v.lng.toString().indexOf('.') != -1)
+                        {
+                           var marker = new google.maps.Marker({
+                                icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                scale: 7,
+                                strokeColor: '#001E62'
+                              },
+                                position: new google.maps.LatLng(parseFloat(v.lat),parseFloat(v.lng)),
+                                map: map,
+                                title: building + ' - ' + type //marker hover information pop up
+                            });
+                            //  Infowindow for pop up display on marker click
+                            var contentString = '<div class="col s12 m6"><div class="card-content white-text"<span class="card-title" style="font-size: 20px">'+building+'</span><p>'+type+'</p><p>Details: '+location+'</p></div><div class="card-action"><button id="favbtn" class="mdc-button"><i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i><span class="mdc-button__label"></span></button></div></div>';
+                            var infowindow = new google.maps.InfoWindow({
+                                    content: contentString
+                            });
+                            google.maps.event.addListener(marker, 'click', function() {
+
+                                if( prev_infowindow ) {
+                                   prev_infowindow.close();
+                                }
+                                infowindow.open(map, marker);
+                                prev_infowindow = infowindow;
+                            }); 
+                        } else{pass}
+                        
                     });
                 });
                 // Create the DIV to hold the geolocation button
@@ -327,7 +331,7 @@
                       handleLocationError(false, infoWindow, map.getCenter());
                     }
                 });
-                // On Sumbitting new location, update indexed db
+                // On Sumbitting new location, update database
                 $("#submit").on("click", function() {
                     // Check if boxes are all filled in
                     var f1 = document.getElementsByClassName('form-control')[0];
@@ -340,8 +344,8 @@
                         var desp = $("#desp").val();
                         var lat = $("#latnum").val();
                         var lng = $("#lngnum").val();
-                        
-                        var jsondata = {building: building,lat: lat, lng: lng, location: desp, type: desp};
+                        // Post data into server db 
+                        var jsondata = {building: building,lat: lat, lng: lng, location: desp, type: gender};
                         var settings = {
                           "async": true,
                           "crossDomain": true,
@@ -355,14 +359,10 @@
                           "processData": false,
                           "data": JSON.stringify(jsondata)
                         }
-
                         $.ajax(settings).done(function (response) {
                           console.log(response);
                         });
-
-                        // Store added info in index db for user
-                        db.restroom.put({building:building, gender:gender,desp:desp,lat:lat,lng:lng, date: new Date()});
-                    
+                        // Clear out boxes for next input
                         $("#buildingname").val('');
                         $("#desp").val('');
                         $("#latnum").val('');

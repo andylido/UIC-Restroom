@@ -31,29 +31,22 @@
   width: 50px;
   overflow: hidden;
 }
-
-
 .fluidlogo:hover .picture::before {
   height: 100%;
 }
-
-
 .fluidlogo .picture img {
   width: 100%;
   border-radius: 100%;
   transform: scale(1);
   transition: all 0.9s ease 0s;
 }
-
 .fluidlogo:hover .picture img {
   transform: scale(0.9);
   background-color: #001E62;
 }
-
 .fluidlogo{
   transition: all 0.5s ease 0s;
 }
-
 .pic {
   border-radius: 8px; width: 110px;
 }
