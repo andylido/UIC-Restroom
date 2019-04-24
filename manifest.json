@@ -11,6 +11,6 @@
   "scope": "./",
   "display": "standalone",
   "background_color": "white",
-  "theme_color": "red",
+  "theme_color": "white",
   "prefer_related_applications": true
 }
