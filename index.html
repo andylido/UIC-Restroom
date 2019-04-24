@@ -75,7 +75,6 @@
             </header>
             <nav class="navigation mdl-navigation">
               <a id="home" class="mdl-navigation__link"><i class="material-icons" role="presentation">home</i>Home</a>
-              <a id="favorite" class="mdl-navigation__link"><i class="material-icons" role="presentation">star</i>Favorites</a>
               <a id="add" class="mdl-navigation__link"><i class="material-icons" role="presentation">add</i>Add</a>
               <a class="mdl-navigation__link" href="https://www.uic.edu/" target="_blank" style="text-decoration: none"><i class="material-icons" role="presentation">info</i>About UIC</a>
               <a class="msg mdl-navigation__link" href="https://weather.com/weather/today/l/USIL0225:1:US" target="_blank" style="text-decoration: none">Can't Fetch Weather</a>
@@ -160,11 +159,11 @@
         <!-- Service Worker -->
         <script>
             //register the service worker for offline use
-            //if ('serviceWorker' in navigator) {
-            //navigator.serviceWorker
-             //.register('./sw.js')
-             //.then(function() { console.log('Service Worker Registered'); });
-            //}
+            if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+             .register('./sw.js')
+             .then(function() { console.log('Service Worker Registered'); });
+            }
         </script>
         
         <!-- Google Maps API-->
@@ -270,7 +269,7 @@
                                 title: building + ' - ' + type //marker hover information pop up
                             });
                             //  Infowindow for pop up display on marker click
-                            var contentString = '<div class="col s12 m6"><div class="card-content white-text"<span class="card-title" style="font-size: 20px">'+building+'</span><p>'+type+'</p><p>Details: '+location+'</p></div><div class="card-action"><button id="favbtn" class="mdc-button"><i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i><span class="mdc-button__label"></span></button></div></div>';
+                            var contentString = '<div class="col s12 m6"><div class="card-content white-text"<span class="card-title" style="font-size: 20px">'+building+'</span><p>'+type+'</p><p>Details: '+location+'</p></div><div class="card-action"></div></div>';
                             var infowindow = new google.maps.InfoWindow({
                                     content: contentString
                             });
