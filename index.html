@@ -9,7 +9,6 @@
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-
           gtag('config', 'UA-138493790-2');
         </script>
 
@@ -113,7 +112,7 @@
                                 </select> 
                             </div><br>
                             <div class="col-md-6">
-                                <h5>Description:</h5>
+                                <h5>Location Description</h5>
                                 <input class="form-control" type="text" id="desp" placeholder="i.e. 2nd Floor; Next to Amazon" required="required"/><br>
                             </div>
                             <div class="col-md-6">
@@ -341,7 +340,27 @@
                         var desp = $("#desp").val();
                         var lat = $("#latnum").val();
                         var lng = $("#lngnum").val();
-                    
+                        
+                        var jsondata = {building: building,lat: lat, lng: lng, location: desp, type: desp};
+                        var settings = {
+                          "async": true,
+                          "crossDomain": true,
+                          "url": "https://uicbr-de20.restdb.io/rest/br-locations-1",
+                          "method": "POST",
+                          "headers": {
+                            "content-type": "application/json",
+                            "x-apikey": "5cbab22f22f4c217d01b6da3",
+                            "cache-control": "no-cache"
+                          },
+                          "processData": false,
+                          "data": JSON.stringify(jsondata)
+                        }
+
+                        $.ajax(settings).done(function (response) {
+                          console.log(response);
+                        });
+
+                        // Store added info in index db for user
                         db.restroom.put({building:building, gender:gender,desp:desp,lat:lat,lng:lng, date: new Date()});
                     
                         $("#buildingname").val('');
