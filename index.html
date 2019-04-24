@@ -361,8 +361,9 @@
                           "data": JSON.stringify(jsondata)
                         }
                         $.ajax(settings).done(function (response) {
-                          console.log(response);
+                          console.log('Sumbission Successful');
                         });
+                        db.restroom.put({date: new Date()});
                         // Clear out boxes for next input
                         $("#buildingname").val('');
                         $("#desp").val('');
