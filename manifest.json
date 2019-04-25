@@ -10,8 +10,8 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "white",
-  "theme_color": "red",
+  "background_color": "#00AEC7",
+  "theme_color": "#00AEC7",
   "prefer_related_applications": true,
   "related_applications": [{
     "platform": "play",
