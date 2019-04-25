@@ -15,7 +15,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <link rel="manifest" href='./manifest.json'>        
         <title>UIC Restroom Finder</title>
 
         <!-- Add to homescreen for Chrome on Android -->
@@ -38,7 +37,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="styles.css">
-        
+        <link rel="manifest" href='./manifest.json'>
 
         <style>
             #view-source {
@@ -77,6 +76,7 @@
             <nav class="navigation mdl-navigation">
               <a id="home" class="mdl-navigation__link"><i class="material-icons" role="presentation">home</i>Home</a>
               <a id="add" class="mdl-navigation__link"><i class="material-icons" role="presentation">add</i>Add</a>
+              <a class="mdl-navigation__link" href="https://uic.blackboard.com/webapps/login/?action=relogin" target="_blank" style="text-decoration: none"><i class="material-icons" role="presentation">school</i>BlackBoard</a>  
               <a class="mdl-navigation__link" href="https://www.uic.edu/" target="_blank" style="text-decoration: none"><i class="material-icons" role="presentation">info</i>About UIC</a>
               <a class="msg mdl-navigation__link" href="https://weather.com/weather/today/l/USIL0225:1:US" target="_blank" style="text-decoration: none">Can't Fetch Weather</a>
               <div class="mdl-layout-spacer"></div>
@@ -138,12 +138,12 @@
                     Instructions:
                     <ul>
                         <li>Select markers on the map to see more detail about the restroom location.</li> 
-                        <li>Use your device to find your location to see the closest bathroom to you.</li> 
-                        <li>Discovered a restroom not on the map or know one we don't? Add it in on the "Add" page to help out others on their next emergency!</li>
+                        <li>Use your device's location finder to see the restrooms closest to you.</li> 
+                        <li>Discovered a restroom not on the map or know one we don't? Go to the "Add" page and record it down to help out others on their next emergency!</li>
                     </ul>
                 </div>
                 <br>
-                <p>ALO is an independent developer, his github can be access by clicking on the developer profile picture.</p>
+                <p>ALO is an independent developer, his github can be accessed by clicking on the developer profile picture.</p>
               </div>
           </main> 
         </div>
@@ -161,9 +161,9 @@
         <script>
             //register the service worker for offline use
             if ('serviceWorker' in navigator) {
-            navigator.serviceWorker
-             .register('./sw.js')
-             .then(function() { console.log('Service Worker Registered'); });
+                navigator.serviceWorker
+                .register('./sw.js')
+                .then(function() { console.log('Service Worker Registered'); });
             }
         </script>
         
@@ -205,7 +205,6 @@
                         var mylocationmarker = new google.maps.Marker({
                           position: currentpos,
                           map: map,
-                          draggable: true,
                           title: 'Current Location'
                           });
                           var contentString = "Your Location";
@@ -225,8 +224,8 @@
                     function handleLocationError(browserHasGeolocation, infoWindow, pos){
                         infoWindow.setPosition(pos);
                         infoWindow.setContent(browserHasGeolocation ?
-                                              'Error: The Geolocation service failed.' :
-                                              'Error: Your browser doesn\'t support geolocation.');
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
                         infoWindow.open(map);
                     }
                 });
@@ -301,18 +300,17 @@
             // Index Database using Dexie
             db = new Dexie("restroom_database");
             db.version(1).stores({
-                //Store something
                 restroom: "++id, building, gender, desp, lat, lng"
             });
             // Functions upon DOM load
             $(document).ready(function() {
                 hidescreen()
-                // Screen hide/show event handlers
+                // Screen hide/show event handler
                 $("#map").show();
                 function hidescreen(){$(".pages").hide();}
                 // Close Drawer when an item is selected
                 $(".mdl-navigation__link").on('click', function() {$( '.mdl-layout__drawer, .mdl-layout__obfuscator' ).removeClass( 'is-visible' );});
-                // On click event handler
+                // Buttons on click event handler
                 $("#logo").on("click", function(){document.location.reload();});
                 $("#logohome").on("click", function(){initMap();hidescreen(),$("#map").show();});
                 $("#about-btn").on("click", function(){hidescreen(),$("#about").show();});
@@ -327,6 +325,8 @@
                             var lng = position.coords.longitude
                             $("#latnum").val(position.coords.latitude);
                             $("#lngnum").val(position.coords.longitude);
+                            document.getElementsByClassName('form-control')[2] = position.coords.latitude;
+                            document.getElementsByClassName('form-control')[3] = position.coords.longitude;
                         });
                     }else {
                       // If Geolocation unable to run then:
@@ -335,16 +335,19 @@
                 });
                 // On Sumbitting new location, update database
                 $("#submit").on("click", function() {
-                    // Check if boxes are all filled in
+                    // Check if all forum boxes are all filled in
                     var f1 = document.getElementsByClassName('form-control')[0];
                     var f2 = document.getElementsByClassName('form-control')[1];
-                    if(f1.checkValidity()&&f2.checkValidity()) {
+                    var f3 = document.getElementsByClassName('form-control')[2];
+                    var f4 = document.getElementsByClassName('form-control')[3];
+                    
                         var building = $("#buildingname").val();
                         var gender = $("#gendertype").val();
                         var desp = $("#desp").val();
                         var lat = $("#latnum").val();
                         var lng = $("#lngnum").val();
                         // Post data into server db 
+                    if(building&&gender&&desp&&lat&&lng) {
                         var jsondata = {building: building,lat: lat, lng: lng, location: desp, type: gender};
                         var settings = {
                           "async": true,
