@@ -96,7 +96,7 @@
               
               <!-- Add a Location Page -->
               <div id="addlocation" class="pages">
-                <div class="content" id="search">
+                    <div class="content" id="search">
                         <h2 class="section-heading">Add New Restroom Location</h2>
                         <div class="col-md-12">
                             <div class="col-md-6">
@@ -126,7 +126,7 @@
                                 <button id="submit" class="btn btn-sm text-uppercase">Submit</button>
                             </div>
                         </div>
-                </div>
+                    </div>
               </div>
               
               <!-- About Page -->
@@ -193,7 +193,9 @@
                 controlText.style.paddingRight = '5px';
                 controlText.innerHTML = 'My Location';
                 controlUI.appendChild(controlText);
-                // Setup the click event to get current geolocation
+                var prev_marker = false;
+                var prev_currentwindow = false;
+                // Event hnadler to get current geolocation on button click
                 controlUI.addEventListener('click', function() {
                   if (navigator.geolocation){
                       navigator.geolocation.getCurrentPosition(function(position){
@@ -202,18 +204,31 @@
                           lng: position.coords.longitude
                         };
                         map.setCenter(currentpos);
+                        map.setZoom(18);
                         var mylocationmarker = new google.maps.Marker({
                           position: currentpos,
                           map: map,
-                          title: 'Current Location'
-                          });
-                          var contentString = "Your Location";
-                          google.maps.event.addListener(mylocationmarker, 'click', function(){
-                            infowindow = new google.maps.InfoWindow({
-                                content:'Current Location'
-                            });
-                            infowindow.open(map, mylocationmarker);
+                          title: 'Current Location',
+                          draggable: true
                         });
+                        // Event handler for infowindow on marker click
+                        google.maps.event.addListener(mylocationmarker, 'click', function(){
+                            var lat = mylocationmarker.getPosition().lat().toFixed(6);
+                            var lng = mylocationmarker.getPosition().lng().toFixed(6);
+                            var contentString = '<div class="card-title" style="font-size: 20px">Your Location</div>'
+                            +'lat: '+lat+'<br>lng: '+lng+'<br> If you dragged the marker please click on the marker again to update its latitude and longitude.';
+                            infowindow = new google.maps.InfoWindow({content: contentString});
+                            map.setZoom(18);
+                            infowindow.open(map, mylocationmarker);
+                            if( prev_currentwindow ) {
+                                   prev_currentwindow.close();
+                                }
+                                infowindow.open(map, mylocationmarker);
+                                prev_currentwindow = infowindow;
+                        });
+                        if (prev_marker){prev_marker.setMap(null);}
+                        else{prev_marker = mylocationmarker;}
+                        google.maps.event.addListener(map, 'click', function() {infowindow.close();});
                     }, function() {
                             handleLocationError(true, infoWindow, map.getCenter());
                         });
@@ -334,19 +349,14 @@
                     }
                 });
                 // On Sumbitting new location, update database
-                $("#submit").on("click", function() {
+                $("#submit").on("click", function() {         
+                    var building = $("#buildingname").val();
+                    var gender = $("#gendertype").val();
+                    var desp = $("#desp").val();
+                    var lat = $("#latnum").val();
+                    var lng = $("#lngnum").val();
                     // Check if all forum boxes are all filled in
-                    var f1 = document.getElementsByClassName('form-control')[0];
-                    var f2 = document.getElementsByClassName('form-control')[1];
-                    var f3 = document.getElementsByClassName('form-control')[2];
-                    var f4 = document.getElementsByClassName('form-control')[3];
-                    
-                        var building = $("#buildingname").val();
-                        var gender = $("#gendertype").val();
-                        var desp = $("#desp").val();
-                        var lat = $("#latnum").val();
-                        var lng = $("#lngnum").val();
-                        // Post data into server db 
+                    // If true, post data into server db, else alert pop-up
                     if(building&&gender&&desp&&lat&&lng) {
                         var jsondata = {building: building,lat: lat, lng: lng, location: desp, type: gender};
                         var settings = {
@@ -366,7 +376,7 @@
                           console.log('Sumbission Successful');
                         });
                         db.restroom.put({date: new Date()});
-                        // Clear out boxes for next input
+                        // Clear out input boxes for next input
                         $("#buildingname").val('');
                         $("#desp").val('');
                         $("#latnum").val('');

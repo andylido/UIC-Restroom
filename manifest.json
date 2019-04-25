@@ -1,6 +1,6 @@
 {
-  "name": "UIC Bathroom Finder",
-  "short_name": "UIC Bathroom",
+  "name": "UIC Restroom Finder",
+  "short_name": "UIC Restroom",
   "icons": [{
     "src": "images/uic1.png",
     "type": "image/png",
@@ -10,6 +10,6 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#00AEC7",
+  "background_color": "white",
   "theme_color": "#00AEC7"
 }
