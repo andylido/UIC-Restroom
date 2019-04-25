@@ -52,6 +52,11 @@
     </head>
     
     <body>
+        <!-- Loading Screen -->
+        <div id="loader-wrapper">
+            <div class="loader"></div>
+        </div>
+        <div id="content">
         <!-- Top Bar -->
         <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout--fixed-header">
           <header class="header mdl-layout__header">
@@ -146,6 +151,7 @@
               </div>
           </main> 
         </div>
+        </div>
         
         <!-- Javascript Packages -->
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -158,12 +164,16 @@
 
         <!-- Service Worker -->
         <script>
+            // Hideo all page content to show loading screen
+            $("#content").hide();
+            $('body').css('background-color','white');
+            
             //register the service worker for offline use
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker
-                .register('./sw.js')
-                .then(function() { console.log('Service Worker Registered'); });
-            }
+            //if ('serviceWorker' in navigator) {
+                //navigator.serviceWorker
+                //.register('./sw.js')
+                //.then(function() { console.log('Service Worker Registered'); });
+            //}
         </script>
         
         <!-- Google Maps API-->
@@ -318,8 +328,13 @@
             });
             // Functions upon DOM load
             $(document).ready(function() {
+                // Loading Screen set to dissapear in 3 seconds
+                setTimeout(function(){
+                    $('#loader-wrapper').hide();
+                    $("#content").show();
+                }, 1000);
+                // Screen hide/show event handlers
                 hidescreen()
-                // Screen hide/show event handler
                 $("#map").show();
                 function hidescreen(){$(".pages").hide();}
                 // Close Drawer when an item is selected
