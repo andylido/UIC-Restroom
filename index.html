@@ -169,11 +169,11 @@
             $('body').css('background-color','white');
             
             // register the service worker for offline use
-            //if ('serviceWorker' in navigator) {
-            //    navigator.serviceWorker
-            //    .register('./sw.js')
-            //    .then(function() { console.log('Service Worker Registered'); });
-            //}
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker
+                .register('./sw.js')
+                .then(function() { console.log('Service Worker Registered'); });
+            }
         </script>
         
         <!-- Google Maps API-->
@@ -293,7 +293,7 @@
                                 icon: {
                                 path: google.maps.SymbolPath.CIRCLE,
                                 scale: 7,
-                                strokeColor: '#001E62'
+                                strokeColor: '#D50032'
                               },
                                 position: new google.maps.LatLng(parseFloat(v.lat),parseFloat(v.lng)),
                                 map: map,
