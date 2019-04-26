@@ -1,4 +1,4 @@
-version = '2.0';
+version = '2.1';
 
 let cacheName = 'RestroomFinder' + version;
 
@@ -23,6 +23,21 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request, {ignoreSearch:false}).then(response => {
       return response || fetch(event.request);
+    })
+  );
+});
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function(cacheName) {
+          // Return true to delete previous caches
+            return true;
+        }).map(function(cacheName) {
+          return caches.delete(cacheName);
+        })
+      );
     })
   );
 });
