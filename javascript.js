@@ -1,7 +1,6 @@
 
 // Use device Geolocation
 function geolocation(controlDiv, map){
-
     // Set CSS for the location button border.
     var controlUI = document.createElement('div');
     controlUI.style.backgroundColor = '#fff';
