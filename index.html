@@ -5,20 +5,24 @@
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138493790-2"></script>
         <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-138493790-2');
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-138493790-2');
         </script>
+
+        <!-- Javascript Packages -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="javascript.js"></script>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <title>UIC Restroom Finder</title>
 
-        <!-- Add to homescreen for Chrome on Android -->
-        <!--<meta name="mobile-web-app-capable" content="yes">-->
-        <!--<link rel="icon" sizes="192x192" href="images/uic1.png">-->
 
         <!-- Add to homescreen for Safari on iOS -->
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -27,11 +31,11 @@
         <link rel="apple-touch-icon-precomposed" href="images/uic1.png">
 
         <link rel="shortcut icon" href="images/uic1.png">
-        
+
         <!--Style Sheets and Material Design link-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-        
+
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -40,18 +44,22 @@
 
         <style>
             #view-source {
-              position: fixed;
-              display: block;
-              right: 0;
-              bottom: 0;
-              margin-right: 40px;
-              margin-bottom: 40px;
-              z-index: 900;
+                position: fixed;
+                display: block;
+                right: 0;
+                bottom: 0;
+                margin-right: 40px;
+                margin-bottom: 40px;
+                z-index: 900;
             }
         </style>
     </head>
-    
+
+    <script>
+
+    </script>
     <body>
+
         <!-- Loading Screen -->
         <div id="loader-wrapper">
             <div class="loader"></div>
@@ -59,47 +67,47 @@
         <div id="content">
             <!-- Top Bar -->
             <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout--fixed-header">
-              <header class="header mdl-layout__header">
-                <div class="mdl-layout__header-row">
-                  <div id="logohome" class="fluidlogo"><div class="picture"><img class="img-fluid" src="images/uicwt.png"></div><div class="card-content"><h4 class="type"></h4></div></div><span id="logohome" class="mdl-layout-title">Restroom Finder</span>
-                  <div class="mdl-layout-spacer"></div>
-                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-                    <i class="material-icons">more_vert</i>
-                  </button>
-                  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-                    <a><li id="about-btn" class="mdl-menu__item">About</li></a>
-                  </ul>
-                </div>
-              </header>
-
-              <!-- Pop-Out Drawer -->
-              <div class="drawer mdl-layout__drawer">
-                <header class="drawer-header">
-                  <div id="logo"><img src="images/uic1.png" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
+                <header class="header mdl-layout__header">
+                    <div class="mdl-layout__header-row">
+                        <div id="logohome" class="fluidlogo"><div class="picture"><img class="img-fluid" src="images/uicwt.png"></div><div class="card-content"><h4 class="type"></h4></div></div><span id="logohome" class="mdl-layout-title">Restroom Finder</span>
+                        <div class="mdl-layout-spacer"></div>
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                            <i class="material-icons">more_vert</i>
+                        </button>
+                        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+                            <a><li id="about-btn" class="mdl-menu__item">About</li></a>
+                        </ul>
+                    </div>
                 </header>
-                <nav class="navigation mdl-navigation">
-                  <a id="home" class="mdl-navigation__link"><i class="material-icons" role="presentation">home</i>Home</a>
-                  <a id="add" class="mdl-navigation__link"><i class="material-icons" role="presentation">add</i>Add</a>
-                  <a class="mdl-navigation__link" href="https://uic.blackboard.com/webapps/login/?action=relogin" target="_blank" style="text-decoration: none"><i class="material-icons" role="presentation">school</i>BlackBoard</a>  
-                  <a class="mdl-navigation__link" href="https://www.uic.edu/" target="_blank" style="text-decoration: none"><i class="material-icons" role="presentation">info</i>About UIC</a>
-                  <a class="msg mdl-navigation__link" href="https://weather.com/weather/today/l/USIL0225:1:US" target="_blank" style="text-decoration: none">Can't Fetch Weather</a>
-                  <div class="mdl-layout-spacer"></div>
-                  <a class="copyrigh">&copy; 2019 Restroom Finder by ALO</a>
-                </nav>
-              </div>
 
-              <!-- Screens -->
-              <main class="mdl-layout__content">
-                  <!-- Map Page -->
-                  <div id="map" class="pages"></div>
+                <!-- Pop-Out Drawer -->
+                <div class="drawer mdl-layout__drawer">
+                    <header class="drawer-header">
+                        <div id="logo"><img src="images/uic1.png" class="avatar"></div><div class="mdl-layout-title dashmenu">Menu</div>
+                    </header>
+                    <nav class="navigation mdl-navigation">
+                        <a id="home" class="mdl-navigation__link"><i class="material-icons" role="presentation">home</i>Home</a>
+                        <a id="add" class="mdl-navigation__link"><i class="material-icons" role="presentation">add</i>Add</a>
+                        <a class="mdl-navigation__link" href="https://uic.blackboard.com/webapps/login/?action=relogin" target="_blank" style="text-decoration: none"><i class="material-icons" role="presentation">school</i>BlackBoard</a>  
+                        <a class="mdl-navigation__link" href="https://www.uic.edu/" target="_blank" style="text-decoration: none"><i class="material-icons" role="presentation">info</i>About UIC</a>
+                        <a class="msg mdl-navigation__link" href="https://weather.com/weather/today/l/USIL0225:1:US" target="_blank" style="text-decoration: none">Can't Fetch Weather</a>
+                        <div class="mdl-layout-spacer"></div>
+                        <a class="copyrigh">&copy; 2019 Restroom Finder by ALO</a>
+                    </nav>
+                </div>
 
-                  <!-- Favorites Page -->
-                  <div id="favpage" class="pages">
-                      <h1 class="section-heading">Favorites</h1>
-                  </div>
+                <!-- Screens -->
+                <main class="mdl-layout__content">
+                    <!-- Map Page -->
+                    <div id="map" class="pages"></div>
 
-                  <!-- Add a Location Page -->
-                  <div id="addlocation" class="pages">
+                    <!-- Favorites Page -->
+                    <div id="favpage" class="pages">
+                        <h1 class="section-heading">Favorites</h1>
+                    </div>
+
+                    <!-- Add a Location Page -->
+                    <div id="addlocation" class="pages">
                         <div class="content" id="search">
                             <h2 class="section-heading">Add New Restroom Location</h2>
                             <div class="col-md-12">
@@ -109,7 +117,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <h5>Gender</h5>
-                                     <select id=gendertype>
+                                    <select id=gendertype>
                                         <option value="Men's Restroom">Men</option>
                                         <option value="Women's Restroom">Women</option>
                                         <option value="All Gender Restroom">All Gender</option>
@@ -131,223 +139,59 @@
                                 </div>
                             </div>
                         </div>
-                  </div>
-
-                  <!-- About Page -->
-                  <div id="about" class="pages">
-                    <a href="https://github.com/andylido/Project_B" target="_blank"><img src="images/AL.jpg" class="pic"></a>
-                    <br><br>
-                    <p>Welcome to Restroom Finder, this intuitive application allows users to locate restrooms around UIC since the campus is so wide and contains so many unique buldings around the city.</p>
-                    <div>
-                        Instructions:
-                        <ul>
-                            <li>Select markers on the map to see more detail about the restroom location.</li> 
-                            <li>Use your device's location finder to see the restrooms closest to you.</li> 
-                            <li>Discovered a restroom not on the map or know one we don't? Go to the "Add" page and record it down to help out others on their next emergency!</li>
-                        </ul>
                     </div>
-                    <br>
-                    <p>ALO is an independent developer, his github can be accessed by clicking on the developer profile picture.</p>
-                  </div>
-              </main> 
+
+                    <!-- About Page -->
+                    <div id="about" class="pages">
+                        <a href="https://github.com/andylido/Project_B" target="_blank"><img src="images/AL.jpg" class="pic"></a>
+                        <br><br>
+                        <p>Welcome to Restroom Finder, this intuitive application allows users to locate restrooms around UIC since the campus is so wide and contains so many unique buldings around the city.</p>
+                        <div>
+                            Instructions:
+                            <ul>
+                                <li>Select markers on the map to see more detail about the restroom location.</li> 
+                                <li>Use your device's network location to see restrooms closest to you.</li> 
+                                <li>Discovered a restroom not on the map or know one we don't? Go to the "Add" page and record it down to help out others on their next emergency!</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <p>ALO is an independent developer, his github can be accessed by clicking on the developer profile picture.</p>
+                    </div>
+                </main> 
             </div>
         </div>
-        
-        <!-- Javascript Packages -->
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
-        <script type="text/javascript" src="javascript.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
         <script>
-            // Hide all page content to show loading screen
-            $(".mdl-layout__content").hide();
-            $('body').css('background-color','white');
-            
             // register the service worker for offline use
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
-                .register('./sw.js')
-                .then(function() { console.log('Service Worker Registered'); });
-            }
-        </script>
-        
-        <!-- Google Maps API-->
-        <script>
-            // Use device Geolocation
-            function geolocation(controlDiv, map){
-                // Set CSS for the location button border.
-                var controlUI = document.createElement('div');
-                controlUI.style.backgroundColor = '#fff';
-                controlUI.style.border = '2px solid #fff';
-                controlUI.style.borderRadius = '3px';
-                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-                controlUI.style.cursor = 'pointer';
-                controlUI.style.marginBottom = '22px';
-                controlUI.style.textAlign = 'center';
-                controlUI.style.margin = '10px';
-                controlUI.title = 'Click to find current location';
-                controlDiv.appendChild(controlUI);
-                // Set CSS for the location button interior.
-                var controlText = document.createElement('div');
-                controlText.style.color = 'rgb(25,25,25)';
-                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-                controlText.style.fontSize = '16px';
-                controlText.style.lineHeight = '38px';
-                controlText.style.paddingLeft = '5px';
-                controlText.style.paddingRight = '5px';
-                controlText.innerHTML = 'My Location';
-                controlUI.appendChild(controlText);
-                var prev_marker = false;
-                var prev_currentwindow = false;
-                // Event hnadler to get current geolocation on button click
-                controlUI.addEventListener('click', function() {
-                  if (navigator.geolocation){
-                      navigator.geolocation.getCurrentPosition(function(position){
-                        var currentpos = {
-                          lat: position.coords.latitude,
-                          lng: position.coords.longitude
-                        };
-                        map.setCenter(currentpos);
-                        map.setZoom(18);
-                        var mylocationmarker = new google.maps.Marker({
-                          position: currentpos,
-                          map: map,
-                          title: 'Current Location',
-                          draggable: true
-                        });
-                        // Event handler for infowindow on marker click
-                        google.maps.event.addListener(mylocationmarker, 'click', function(){
-                            var lat = mylocationmarker.getPosition().lat().toFixed(6);
-                            var lng = mylocationmarker.getPosition().lng().toFixed(6);
-                            infowindow = new google.maps.InfoWindow({
-                                content: " "
-                            });
-                            infowindow.setContent(
-                              '<div class="card-title" style="font-size: 20px">Your Location</div>'+
-                              'lat: ' + lat +
-                              '<br>lng: ' + lng +
-                              '<br><br> If you dragged the marker please click on the marker again to update its latitude and longitude.');
-                            infowindow.open(map, this);
-                            infowindow.open(map, mylocationmarker);
-                            map.setZoom(18);
-                            if( prev_currentwindow ) {
-                                   prev_currentwindow.close();
-                                }
-                            infowindow.open(map, mylocationmarker);
-                            prev_currentwindow = infowindow;
-                        });
-                        if (prev_marker){prev_marker.setMap(null);}
-                        prev_marker = mylocationmarker;
-                        google.maps.event.addListener(map, 'click', function() {infowindow.close();});
-                    }, function() {
-                            handleLocationError(true, infoWindow, map.getCenter());
-                        });
-                    } else {
-                      // If Geolocation unable to run then:
-                      handleLocationError(false, infoWindow, map.getCenter());
-                    }
-                    function handleLocationError(browserHasGeolocation, infoWindow, pos){
-                        infoWindow.setPosition(pos);
-                        infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-                        infoWindow.open(map);
-                    }
-                });
-            }
-            // Initiate Google Maps to UIC coordinates on Start
-            function initMap() {
-                var uic = {lat: 41.8698, lng: -87.6496};
-                map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 16,
-                  center: uic
-                });
-                // Make an Ajax Call for Bathroom locations using restdb.io API
-                var settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": "https://uicbr-de20.restdb.io/rest/br-locations-1",
-                    "method": "GET",
-                    "headers": {
-                      "content-type": "application/json",
-                      "x-apikey": "5cbab22f22f4c217d01b6da3",
-                      "cache-control": "no-cache"
-                    }
-                }
-                // Card display for Markers
-                $.ajax(settings).done(function (response) {
-                    var data = response;
-                    var prev_infowindow =false;
-                    $.each(data, function(i,v){
-                        var building = v.building;
-                        var type = v.type;
-                        var location = v.location;
-                        // Check that the values of lat and lng are floats
-                        if (!isNaN(v.lat) && v.lat.toString().indexOf('.') != -1 && !isNaN(v.lng) && v.lng.toString().indexOf('.') != -1){
-                           var marker = new google.maps.Marker({
-                                icon: {
-                                path: google.maps.SymbolPath.CIRCLE,
-                                scale: 7,
-                                strokeColor: '#D50032'
-                              },
-                                position: new google.maps.LatLng(parseFloat(v.lat),parseFloat(v.lng)),
-                                map: map,
-                                title: building + ' - ' + type //marker hover information pop up
-                            });
-                            //  Infowindow for pop up display on marker click
-                            var contentString = '<div class="col s12 m6"><div class="card-content white-text"<span class="card-title" style="font-size: 20px">'+building+'</span><p>'+type+'</p><p>Details: '+location+'</p></div><div class="card-action"></div></div>';
-                            var infowindow = new google.maps.InfoWindow({
-                                    content: contentString
-                            });
-                            // Event handler to only have one info window open at a time
-                            google.maps.event.addListener(marker, 'click', function() {
-                                if( prev_infowindow ) {
-                                   prev_infowindow.close();
-                                }
-                                infowindow.open(map, marker);
-                                prev_infowindow = infowindow;
-                            }); 
-                            // Event handler to close infowindow on map click
-                            google.maps.event.addListener(map, 'click', function() {
-                                infowindow.close();
-                            }); 
-                        }else{pass}
-                    });
-                });
-                // Create the DIV to hold the geolocation button
-                var geolocationDiv = document.createElement('div');
-                var geo = new geolocation(geolocationDiv, map);
-                geolocationDiv.index = 1;
-                map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(geolocationDiv);
+                    .register('./sw.js')
+                    .then(function() { console.log('Service Worker Registered'); });
             }
         </script>
 
+        <!-- Link Dexie for Indexed DB -->
+        <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
         <script>
             // Index Database using Dexie
             db = new Dexie("restroom_database");
             db.version(1).stores({
                 restroom: "++id, building, gender, desp, lat, lng"
             });
-            // Functions upon DOM load
+        </script>
+
+        <script>
+            $(".mdl-layout__content").hide();
+            $('body').css('background-color','white');
+
+            // Loading Screen set to dissapear in 1.6 seconds
+            setTimeout(function(){
+                $('#loader-wrapper').hide();
+                $(".mdl-layout__content").show();
+            }, 1600);
+
             $(document).ready(function() {
-                // Loading Screen set to dissapear in 3 seconds
-                setTimeout(function(){
-                    $('#loader-wrapper').hide();
-                    $(".mdl-layout__content").show();
-                    db.restroom.put({date: new Date()}); //Log Date user opens app in indexed db
-                }, 1000);
-                // Screen hide/show event handlers
-                hidescreen()
-                $("#map").show();
-                function hidescreen(){$(".pages").hide();}
-                // Close Drawer when an item is selected
-                $(".mdl-navigation__link").on('click', function() {$( '.mdl-layout__drawer, .mdl-layout__obfuscator' ).removeClass( 'is-visible' );});
-                // Buttons on click event handler
-                $("#logo").on("click", function(){document.location.reload();});
+                db.restroom.put({date: new Date()}); //Log Date into index db
                 $("#logohome").on("click", function(){
                     $(".mdl-layout__content").hide();
                     $('#loader-wrapper').show();
@@ -355,82 +199,17 @@
                     setTimeout(function(){
                         $('#loader-wrapper').hide();
                         $(".mdl-layout__content").show();
-                        db.restroom.put({date: new Date()}); //Log Date user opens app in indexed db
-                    }, 1300);
-                    hidescreen();
+                    }, 1100);
+                    $(".pages").hide();
                     $("#map").show();
                 });
-                $("#about-btn").on("click", function(){hidescreen(),$("#about").show();});
-                $("#help-btn").on("click", function(){hidescreen(),$("#about").show();});
-                $("#home").on("click", function(){hidescreen(), $("#map").show();});
-                $("#add").on("click", function(){hidescreen(),$("#addlocation").show();});
-                $("#favorite").on("click", function(){hidescreen(),$("#favpage").show();});
-                $("#getmylocal").on("click", function(){
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function(position) {
-                            var lat = position.coords.latitude
-                            var lng = position.coords.longitude
-                            $("#latnum").val(position.coords.latitude);
-                            $("#lngnum").val(position.coords.longitude);
-                            document.getElementsByClassName('form-control')[2] = position.coords.latitude;
-                            document.getElementsByClassName('form-control')[3] = position.coords.longitude;
-                        });
-                    }else {
-                      // If Geolocation unable to run then:
-                      handleLocationError(false, infoWindow, map.getCenter());
-                    }
-                });
-                // On Sumbitting new location, update database
-                $("#submit").on("click", function() {         
-                    var building = $("#buildingname").val();
-                    var gender = $("#gendertype").val();
-                    var desp = $("#desp").val();
-                    var lat = $("#latnum").val();
-                    var lng = $("#lngnum").val();
-                    // Check if all forum boxes are all filled in
-                    // If true, post data into server db, else alert pop-up
-                    if(building&&gender&&desp&&lat&&lng) {
-                        var jsondata = {building: building,lat: lat, lng: lng, location: desp, type: gender};
-                        var settings = {
-                          "async": true,
-                          "crossDomain": true,
-                          "url": "https://uicbr-de20.restdb.io/rest/br-locations-1",
-                          "method": "POST",
-                          "headers": {
-                            "content-type": "application/json",
-                            "x-apikey": "5cbab22f22f4c217d01b6da3",
-                            "cache-control": "no-cache"
-                          },
-                          "processData": false,
-                          "data": JSON.stringify(jsondata)
-                        }
-                        $.ajax(settings).done(function (response) {
-                          console.log('Sumbission Successful');
-                        });
-                        // Clear out input boxes for next input
-                        $("#buildingname").val('');
-                        $("#desp").val('');
-                        $("#latnum").val('');
-                        $("#lngnum").val('');
-                        alert("Location submitted for review.\nWhen validated it will be added onto the map.\n\n Thanks!");
-                    } else {
-                        alert("Please fill in all columns. If unknown, type: NA");
-                    }
-                });
-            });  
-            //Make an Ajax Call for Weather using OpenWeathermap API
-            var weatherurl = "https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=6c40b84bd4c1b447c8ff9daa4e5c3e1a";
-            $.get(weatherurl, function(responce){
-                var temp = responce.main.temp;
-                temp = Math.round(((temp-273.15)*(9/5) +32));
-                $(".msg").empty();
-                $(".msg").append("It is "+temp+"&#176;F on campus right now.");
-            });            
+            });
         </script>
-        
+
+        <!--  Link Google Maps API -->
         <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdolrp_YYYRPBKtDNKONpVTprkieSdPNY&callback=initMap">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdolrp_YYYRPBKtDNKONpVTprkieSdPNY&callback=initMap">
         </script>  
-      
+
     </body>
 </html>

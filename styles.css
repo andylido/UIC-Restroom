@@ -10,12 +10,12 @@
     width: 100%;
 }
 .loader {
-  border: 14px solid #f3f3f3;
+  border: 10px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 14px solid #D50032;
-  border-right: 14px solid white;
-  border-bottom: 14px solid #001E62;
-  border-left: 14px solid white;
+  border-top: 10px solid #D50032;
+  border-right: 10px solid white;
+  border-bottom: 10px solid #001E62;
+  border-left: 10px solid white;
   width: 70px;
   height: 70px;
   -webkit-animation: spin 2s linear infinite;
