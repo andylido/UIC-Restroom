@@ -169,7 +169,7 @@
         
         <!-- register the service worker for offline use -->
         <script>
-            var version = '2.3';
+            var version = '2.4';
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
                     .register('./sw.js')
@@ -188,7 +188,7 @@
             setTimeout(function(){
                 $('#loader-wrapper').hide();
                 $(".mdl-layout__content").show();
-            }, 1600);
+            }, 2000);
 
             $(document).ready(function() {
                 $("#logohome").on("click", function(){
