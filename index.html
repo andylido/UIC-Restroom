@@ -21,6 +21,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <link rel="shortcut icon" href="images/uic1.png">
         <title>UIC Restroom Finder</title>
 
 
@@ -29,8 +30,6 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-title" content="Material Design Lite">
         <link rel="apple-touch-icon-precomposed" href="images/uic1.png">
-
-        <link rel="shortcut icon" href="images/uic1.png">
 
         <!--Style Sheets and Material Design link-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -89,7 +88,7 @@
                         <a class="mdl-navigation__link" href="https://www.uic.edu/" target="_blank" style="text-decoration: none"><i class="material-icons" role="presentation">info</i>About UIC</a>
                         <a class="msg mdl-navigation__link" href="https://weather.com/weather/today/l/USIL0225:1:US" target="_blank" style="text-decoration: none">Can't Fetch Weather</a>
                         <div class="mdl-layout-spacer"></div>
-                        <a class="copyrigh">&copy; 2019 Restroom Finder by ALO</a>
+                        <div id="copyrigh" class="copyrigh"></div>
                     </nav>
                 </div>
 
@@ -158,25 +157,29 @@
             </div>
         </div>
 
-        <script>
-            // register the service worker for offline use
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker
-                    .register('./sw.js')
-                    .then(function() { console.log('Service Worker Registered'); });
-            }
-        </script>
-
         <!-- Link Dexie for Indexed DB -->
         <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
         <script>
             // Index Database using Dexie
             db = new Dexie("restroom_database");
             db.version(1).stores({
-                restroom: "++id, building, gender, desp, lat, lng"
+                restroom: "++id, date, ver "
             });
         </script>
-
+        
+        <!-- register the service worker for offline use -->
+        <script>
+            var version = '2.3';
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker
+                    .register('./sw.js')
+                    .then(function() { console.log('Service Worker Registered'); });
+            }
+            $("#copyrigh").append('&copy; 2019 Restroom Finder by ALO (v.'+version+')');
+            db.restroom.put({ver: version, date: new Date()}); //Stores Date into index db
+        </script>
+        
+        <!-- Simple Jquery Scripts-->
         <script>
             $(".mdl-layout__content").hide();
             $('body').css('background-color','white');
@@ -188,7 +191,6 @@
             }, 1600);
 
             $(document).ready(function() {
-                db.restroom.put({date: new Date()}); //Log Date into index db
                 $("#logohome").on("click", function(){
                     $(".mdl-layout__content").hide();
                     $('#loader-wrapper').show();
