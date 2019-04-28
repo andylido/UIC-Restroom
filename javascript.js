@@ -189,12 +189,12 @@ $(document).ready(function() {
         }
     });
     $("#logohome").on("click", function(){
-        $(".mdl-layout__content").hide();
+        $(".mdl-layout").hide();
         $('#loader-wrapper').show();
         initMap();
         setTimeout(function(){
             $('#loader-wrapper').hide();
-            $(".mdl-layout__content").show();
+            $(".mdl-layout").show();
             $("#map").show();
         }, 1100);
         $(".pages").hide();

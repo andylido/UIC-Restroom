@@ -93,7 +93,7 @@
                 </div>
 
                 <!-- Screens -->
-                <main class="mdl-layout__content">
+                <main class="mdl-layout">
                     <!-- Map Page -->
                     <div id="map" class="pages"></div>
 
@@ -163,7 +163,7 @@
 
 
             // Register the service worker for offline use
-            var version = '2.6';
+            var version = '2.7';
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
                     .register('./sw.js')
