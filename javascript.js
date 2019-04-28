@@ -36,7 +36,7 @@ function geolocation(controlDiv, map){
                     lng: position.coords.longitude
                 };
                 map.setCenter(currentpos);
-                map.setZoom(18);
+                map.setZoom(19);
                 var mylocationmarker = new google.maps.Marker({
                     position: currentpos,
                     map: map,
@@ -57,7 +57,6 @@ function geolocation(controlDiv, map){
                         '<br><br> If you dragged the marker please click on the marker again to update its latitude and longitude.');
                     infowindow.open(map, this);
                     infowindow.open(map, mylocationmarker);
-                    map.setZoom(18);
                     if( prev_currentwindow ) {
                         prev_currentwindow.close();
                     }
@@ -191,6 +190,7 @@ $(document).ready(function() {
     $("#logohome").on("click", function(){
         $(".mdl-layout").hide();
         $('#loader-wrapper').show();
+        $('.layout').show();
         initMap();
         setTimeout(function(){
             $('#loader-wrapper').hide();
@@ -198,7 +198,6 @@ $(document).ready(function() {
             $("#map").show();
         }, 1100);
         $(".pages").hide();
-        $("#map").show();
     });
 
     // On Sumbitting new location, update database
