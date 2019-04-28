@@ -1,5 +1,4 @@
-# Project_B
+# UIC Restroom Finder
 Final Project for IT-202.
-In this project we will build a progressive web application that focus on helping UIC students locate bathrooms around the campus.
-
-Website link: [UIC Restroom Finder](andylido.github.io/Project_B)
+In this project we will build a progressive web application that focuses on helping UIC students locate bathrooms around the campus. Click on the following link to visit the web application.
+<a href="andylido.github.io/UIC-Restrooms">UIC Restroom Finder</a>
