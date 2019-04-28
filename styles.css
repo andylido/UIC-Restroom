@@ -1,236 +1,242 @@
 #loader-wrapper{
-  position:fixed;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -100px;
-  align-items: center;
-  align-content: center;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+    align-items: center;
+    align-content: center;
     height: 100%;
     width: 100%;
 }
 .loader {
-  border: 10px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 10px solid #D50032;
-  border-right: 10px solid white;
-  border-bottom: 10px solid #001E62;
-  border-left: 10px solid white;
-  width: 70px;
-  height: 70px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-  margin-left: 65px;
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid #D50032;
+    border-right: 10px solid white;
+    border-bottom: 10px solid #001E62;
+    border-left: 10px solid white;
+    width: 70px;
+    height: 70px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin-left: 65px;
 }
 
 /* Safari */
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(1440deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(1440deg); }
 }
 
 
 
 #favorite {
-  display: none;    
+    display: none;    
 }
 .copyrigh{
-  text-align: center;
-  color: white!important;
-  margin-bottom: 4px;
-  font-family: sans-serif;
-  font-size: 10px;
+    text-align: center;
+    color: white!important;
+    margin-bottom: 4px;
+    font-family: sans-serif;
+    font-size: 10px;
 }
 #addlocation, #favpage{
-  margin: 10px;
-  padding: 10px;
-  margin-left: 35px;
+    margin: 10px;
+    padding: 10px;
+    margin-left: 35px;
 }
 #getmylocal{
-  background-color: gray;
-  color: white;
-  margin-bottom: 8px;
+    background-color: gray;
+    color: white;
+    margin-bottom: 8px;
 }
 #getmylocal:hover{
-  color: white;
-  background-color: dimgrey;
+    color: white;
+    background-color: dimgrey;
 }
 #submit{
-  background-color: #00AEC7;
-  color: white;
+    background-color: #00AEC7;
+    color: white;
 }
 #submit:hover{
     background-color: #001E62;
 }
 .fluidlogo {
-  overflow: hidden;
-  height: 50px;
-  width: 50px;
-  margin-right: 5px;
+    overflow: hidden;
+    height: 50px;
+    width: 50px;
+    margin-right: 5px;
 }
 
 .fluidlogo .picture {
-  height: 50px;
-  width: 50px;
-  overflow: hidden;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
 }
 .fluidlogo:hover .picture::before {
-  height: 100%;
+    height: 100%;
 }
 .fluidlogo .picture img {
-  width: 100%;
-  border-radius: 100%;
-  transform: scale(1);
-  transition: all 0.9s ease 0s;
+    width: 100%;
+    border-radius: 100%;
+    transform: scale(1);
+    transition: all 0.9s ease 0s;
 }
 .fluidlogo:hover .picture img {
-  transform: scale(0.9);
-  background-color: #001E62;
+    transform: scale(0.9);
+    background-color: #001E62;
 }
 .fluidlogo{
-  transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+}
+#div-info{
+    display: inline-block;
 }
 .pic {
-  border-radius: 8px; width: 110px;
+    border-radius: 8px; width: 50px;
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
 }
 #about {
-  margin: 20px;
+    margin: 20px;
 }
 #my_button:hover{
-  background-color:#3B6EC2;
+    background-color:#3B6EC2;
 } 
 
 
 
 .my-card .card{
-  height: 350px;
-  width: 350px;
-  display: inline-block;
+    height: 350px;
+    width: 350px;
+    display: inline-block;
 }
 .mdl-layout__header-row{
-  background-color: #00AEC7!important;
+    background-color: #00AEC7!important;
 }
 .mdl-layout-title{
-  color: white;
+    color: white;
 }
 #map {
-  height: 100%;  
-  width: 100%; 
-       }
+    height: 100%;  
+    width: 100%; 
+}
 .dashmenu {
-  text-align: left;
-  padding-right: 15px;
-  font-size: 28px;
-  font-family:inherit;
-  font-weight: 500
+    text-align: left;
+    padding-right: 15px;
+    font-size: 28px;
+    font-family:inherit;
+    font-weight: 500
 }
 html, body {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
+    font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 #headerlogo {
-  width: 50px;
-  height: 50px; 
+    width: 50px;
+    height: 50px; 
 }
 .avatar {
-  width: 75px;
-  height: 75px;
-  margin-left: 140px;
+    width: 75px;
+    height: 75px;
+    margin-left: 140px;
 }
 .layout .mdl-layout__header .mdl-layout__drawer-button {
-  color: white;
-  background-color: #00AEC7;
+    color: white;
+    background-color: #00AEC7;
 }
 
 .drawer {
-  border: none;
+    border: none;
 }
 /* iOS Safari specific workaround */
 .drawer .mdl-menu__container {
-  z-index: -1;
+    z-index: -1;
 }
 .drawer .navigation {
-  z-index: -2;
+    z-index: -2;
 }
 /* END iOS Safari specific workaround */
 .drawer .mdl-menu .mdl-menu__item {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 .drawer-header {
-  box-sizing: border-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-justify-content: flex-end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  padding: 16px;
-  background-image: url("images/building.jpg");
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-color: #001E62;
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 16px;
+    background-image: url("images/building.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-color: #001E62;
 }
 .avatar-dropdown {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
 }
 
 .navigation {
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
 }
 .layout .navigation .mdl-navigation__link {
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: white;
-  font-weight: 500;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: white;
+    font-weight: 500;
 }
 .layout .navigation .mdl-navigation__link:hover {
-  background-color: red;
-  color: white;
+    background-color: red;
+    color: white;
 }
 .navigation .mdl-navigation__link .material-icons {
-  font-size: 24px;
-  color: white;
-  margin-right: 32px;
+    font-size: 24px;
+    color: white;
+    margin-right: 32px;
 }
 
 .content {
-  max-width: 1080px;
+    max-width: 1080px;
 }
 
 .mdl-button--icon{
-  color: white;
+    color: white;
 }
 .mdl-navigation{
-background-color: #001E62;
+    background-color: #001E62;
 }
