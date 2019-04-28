@@ -59,7 +59,7 @@
         <div id="loader-wrapper">
             <div class="loader"></div>
         </div>
-    
+
         <div id="content">
             <!-- Top Bar -->
             <div class="layout mdl-layout mdl-js-layout mdl-layout-drawer mdl-layout--fixed-header">
@@ -160,11 +160,10 @@
             db.version(1).stores({
                 restroom: "++id, date, ver "
             });
-        </script>
-        
-        <!-- register the service worker for offline use -->
-        <script>
-            var version = '2.4';
+
+
+            // Register the service worker for offline use
+            var version = '2.5';
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
                     .register('./sw.js')
@@ -172,17 +171,16 @@
             }
             $("#copyrigh").append('&copy; 2019 Restroom Finder by ALO (v.'+version+')');
             db.restroom.put({ver: version, date: new Date()}); //Stores Date into index db
-        </script>
-        
-        <!-- Simple Jquery Scripts-->
-        <script>
-            $(".mdl-layout__content").hide();
+
+
+            // Simple Jquery Scripts
+            $(".pages").hide();
             $('body').css('background-color','white');
 
             // Loading Screen set to dissapear in 1.6 seconds
             setTimeout(function(){
                 $('#loader-wrapper').hide();
-                $(".mdl-layout__content").show();
+                $("#map").show();
             }, 2000);
 
             $(document).ready(function() {
@@ -193,6 +191,7 @@
                     setTimeout(function(){
                         $('#loader-wrapper').hide();
                         $(".mdl-layout__content").show();
+                        $("#map").show();
                     }, 1100);
                     $(".pages").hide();
                     $("#map").show();

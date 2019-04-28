@@ -165,7 +165,10 @@ $(document).ready(function() {
 
     // Click event handlers for buttons
     $("#logo").on("click", function(){document.location.reload();});
-    $("#about-btn").on("click", function(){hidescreen(),$("#about").show();});
+    $("#about-btn").on("click", function(){
+        hidescreen();
+        $("#about").show();
+    });
     $("#help-btn").on("click", function(){hidescreen(),$("#about").show();});
     $("#home").on("click", function(){hidescreen(), $("#map").show();});
     $("#add").on("click", function(){hidescreen(),$("#addlocation").show();});
