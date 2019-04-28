@@ -1,4 +1,4 @@
-version = '2.8';
+version = '1.0';
 
 let cacheName = 'RestroomFinder' + version;
 

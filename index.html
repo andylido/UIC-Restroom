@@ -165,13 +165,13 @@
             });
 
             // Register the service worker for offline use
-            var version = '2.8';
+            var version = '1.0';
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
                     .register('./sw.js')
                     .then(function() { console.log('Service Worker Registered'); });
             }
-            $("#copyrigh").append('&copy; 2019 Restroom Finder by ALO (v'+version+')');
+            $("#copyrigh").append('&copy; 2019 Restroom Finder by AL (v'+version+')');
             db.restroom.put({ver: version, date: new Date()}); //Stores Date into index db
 
             // Simple Jquery Scripts
