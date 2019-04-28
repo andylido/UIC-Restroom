@@ -140,7 +140,7 @@
                         <div>
                             Instructions:
                             <ul>
-                                <li>Select markers on the map to see more detail about the restroom location.</li> 
+                                <li>Select markers on the map to view more details about each restroom location.</li> 
                                 <li>Use your device's network location to see restrooms closest to you.</li> 
                                 <li>Discovered a restroom not on the map or know one we don't? Go to the "Add" page and record it down to help out others on their next emergency!</li>
                             </ul>
@@ -163,13 +163,13 @@
 
 
             // Register the service worker for offline use
-            var version = '2.5';
+            var version = '2.6';
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
                     .register('./sw.js')
                     .then(function() { console.log('Service Worker Registered'); });
             }
-            $("#copyrigh").append('&copy; 2019 Restroom Finder by ALO (v.'+version+')');
+            $("#copyrigh").append('&copy; 2019 Restroom Finder by ALO (v'+version+')');
             db.restroom.put({ver: version, date: new Date()}); //Stores Date into index db
 
 
@@ -183,20 +183,7 @@
                 $("#map").show();
             }, 2000);
 
-            $(document).ready(function() {
-                $("#logohome").on("click", function(){
-                    $(".mdl-layout__content").hide();
-                    $('#loader-wrapper').show();
-                    initMap();
-                    setTimeout(function(){
-                        $('#loader-wrapper').hide();
-                        $(".mdl-layout__content").show();
-                        $("#map").show();
-                    }, 1100);
-                    $(".pages").hide();
-                    $("#map").show();
-                });
-            });
+            
         </script>
 
         <!--  Link Google Maps API -->

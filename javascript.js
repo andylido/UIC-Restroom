@@ -188,6 +188,18 @@ $(document).ready(function() {
             handleLocationError(false, infoWindow, map.getCenter());
         }
     });
+    $("#logohome").on("click", function(){
+        $(".mdl-layout__content").hide();
+        $('#loader-wrapper').show();
+        initMap();
+        setTimeout(function(){
+            $('#loader-wrapper').hide();
+            $(".mdl-layout__content").show();
+            $("#map").show();
+        }, 1100);
+        $(".pages").hide();
+        $("#map").show();
+    });
 
     // On Sumbitting new location, update database
     $("#submit").on("click", function() {         
